@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <title>Arena Pass · Amerant Bank Arena</title>
+  <meta name="description" content="Compra entradas en 3D para el Amerant Bank Arena (Sunrise, área de Fort Lauderdale). Elige tu sección, tu asiento y mira la vista antes de comprar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="scene" aria-label="Mapa 3D del Amerant Bank Arena"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="11" fill="#e0223a"/><path d="M10 26c3-8 7-12 10-12s7 4 10 12" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="20" cy="26" r="3" fill="#ffc53d"/></svg>
+      <div>
+        <strong>ARENA&nbsp;PASS</strong>
+        <span>Amerant Bank Arena · Sunrise, FL</span>
+      </div>
+    </div>
+    <nav id="events" class="events" aria-label="Eventos"></nav>
+  </header>
+
+  <button id="back" class="back hidden" type="button">← Volver</button>
+
+  <aside id="panel" class="panel" aria-live="polite"></aside>
+
+  <div id="legend" class="legend">
+    <div class="legend-row">
+      <span><i class="dot free"></i>Disponible</span>
+      <span><i class="dot taken"></i>Vendido</span>
+      <span><i class="dot sel"></i>Tu selección</span>
+    </div>
+    <label class="price-filter">
+      <span>Precio máx. <b id="maxPriceLabel">—</b></span>
+      <input id="maxPrice" type="range" min="0" max="100" step="5" value="100">
+    </label>
+  </div>
+
+  <div id="tooltip" class="tooltip hidden"></div>
+  <div id="cartbar" class="cartbar hidden"></div>
+  <div id="toast" class="toast hidden"></div>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"></div>
+
+  <div id="loader" class="loader">
+    <div class="spinner"></div>
+    <p>Construyendo el arena en 3D…</p>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
