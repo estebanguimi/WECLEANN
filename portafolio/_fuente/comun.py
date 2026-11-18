@@ -122,3 +122,77 @@ def galeria(slug, clase="galeria", extra_attr=""):
             k += 1
         html.append(f'<div class="g-fila">{"".join(celdas)}</div>')
     return f'<div class="{clase}" data-galeria>{"".join(html)}</div>'
+
+
+def videos(slug):
+    """Videos propios del proyecto: img/video/<slug>-1.mp4, <slug>-2.mp4 ... (se muestran si existen)."""
+    d = os.path.join(RAIZ, "img", "video")
+    if not os.path.isdir(d):
+        return []
+    return sorted(f for f in os.listdir(d) if f.startswith(slug + "-") and f.endswith(".mp4"))
+
+
+def bloque_video(p, clase="videos-p"):
+    vs = videos(p["slug"])
+    if not vs:
+        return ""
+    poster = img(p["slug"], p["portada"])
+    items = "".join(
+        f'<figure class="video-p"><video controls playsinline preload="metadata" poster="{poster}" src="{IMG["p"]}video/{v}"></video></figure>'
+        for v in vs)
+    return f'<div class="{clase}">{items}</div>'
+
+
+def cv_nav_pdf():
+    return D.CV_PDF
+
+
+# ---------------------------------------------------------------- Currículum (marcado común; cada línea le da su estilo)
+def cv_secciones(eti_h2="cv-h"):
+    exp = []
+    for x in D.EXPERIENCIA:
+        proys = "".join(
+            f'<a class="cv-proy" href="{s}.html"><img src="{img(s, D.por_slug(s)["portada"])}" alt="" loading="lazy"><span>{e(D.por_slug(s)["corto"])}</span></a>'
+            for s in x["proyectos"])
+        exp.append(f"""<li class="cv-item">
+  <p class="cv-fechas">{e(x['fechas'])}</p>
+  <div class="cv-cuerpo">
+    <h3>{e(x['puesto'])} <span>{e(x['empresa'])}</span></h3>
+    <p class="cv-lugar">{e(x['lugar'])}</p>
+    <ul>{''.join(f'<li>{e(p)}</li>' for p in x['puntos'])}</ul>
+    {f'<div class="cv-proys">{proys}</div>' if proys else ''}
+  </div>
+</li>""")
+    hab = "".join(f"<div><dt>{e(t)}</dt><dd>{e(' · '.join(l))}</dd></div>" for t, l in D.HABILIDADES)
+    her = "".join(f"<li>{e(h)}</li>" for h in D.HERRAMIENTAS)
+    idi = "".join(f"<li><b>{e(a)}</b> {e(b)}</li>" for a, b in D.IDIOMAS)
+    cif = "".join(f'<div class="cv-cifra"><b>{e(a)}</b><span>{e(b)}</span></div>' for a, b in D.CIFRAS)
+    return f"""<div class="cv">
+  <div class="cv-cab">
+    <img class="cv-foto" src="{retrato()}" alt="Retrato de {e(D.NOMBRE)}">
+    <div class="cv-id">
+      <p class="cv-puesto">{e(D.PUESTO)}</p>
+      <p class="cv-resumen">{e(D.CV_RESUMEN)}</p>
+      <div class="cv-acciones">
+        <a class="cv-pdf" href="{D.CV_PDF}" download>Descargar CV en PDF</a>
+        <button type="button" class="cv-correo" data-copiar="{e(D.CORREO)}">{e(D.CORREO)}</button>
+      </div>
+    </div>
+  </div>
+  <div class="cv-cifras">{cif}</div>
+  <section class="cv-bloque"><h2 class="{eti_h2}">Experiencia</h2><ol class="cv-exp">{''.join(exp)}</ol></section>
+  <section class="cv-bloque cv-dos">
+    <div><h2 class="{eti_h2}">Habilidades</h2><dl class="cv-hab">{hab}</dl></div>
+    <div><h2 class="{eti_h2}">Herramientas</h2><ul class="cv-chips">{her}</ul>
+      <h2 class="{eti_h2}">Idiomas</h2><ul class="cv-idiomas">{idi}</ul>
+      <h2 class="{eti_h2}">Base</h2><p class="cv-base">{e(D.CIUDAD)} · Origen {e(D.ORIGEN)}<br>{e(D.DISPONIBLE)}</p></div>
+  </section>
+</div>"""
+
+
+def recorrido(eti_h2="cv-h"):
+    """Resumen de experiencia para la portada: puesto, empresa y fechas."""
+    filas = "".join(
+        f'<li><span class="rc-f">{e(x["fechas"])}</span><b>{e(x["puesto"])}</b><span class="rc-e">{e(x["empresa"])}</span></li>'
+        for x in D.EXPERIENCIA)
+    return f'<ol class="recorrido">{filas}</ol>'

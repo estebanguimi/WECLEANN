@@ -282,3 +282,8 @@
   var go = function () { if (ya) return; ya = true; arrancar(); if (ST) ST.refresh(); };
   if (document.readyState === "complete") go(); else { addEventListener("load", go); setTimeout(go, 2500); }
 })();
+
+/* Aviso al copiar el correo desde el currículum */
+document.querySelectorAll(".cv-correo").forEach(function (b) {
+  b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Correo copiado"; setTimeout(function () { b.textContent = t; }, 1600); });
+});

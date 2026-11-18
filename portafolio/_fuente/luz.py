@@ -18,7 +18,7 @@ MONOGRAMA = """<svg class="mono-eg" viewBox="0 0 64 64" aria-hidden="true">
 
 
 def nav(activa=""):
-    items = [("index.html", "Inicio"), ("trabajo.html", "Trabajo"), ("sobre.html", "Sobre mí"), ("contacto.html", "Contacto")]
+    items = [("index.html", "Inicio"), ("trabajo.html", "Trabajo"), ("sobre.html", "Sobre mí"), ("cv.html", "CV"), ("contacto.html", "Contacto")]
     links = "".join(
         f'<a href="{h}" class="nav-l{" es-activa" if h == activa else ""}" data-cursor="ir"><span>{t}</span></a>' for h, t in items)
     return f"""<header class="cab" data-cab>
@@ -36,11 +36,12 @@ def pie():
   <div class="pie-fila">
     <button type="button" class="pie-correo" data-copiar="{e(D.CORREO)}">{e(D.CORREO)} <span class="mono" data-copiado>Copiar</span></button>
     <nav class="pie-redes" aria-label="Redes">
-      <a href="{e(D.BEHANCE)}" target="_blank" rel="noopener">Behance</a>
+      <a href="cv.html">Currículum</a>
+      <a href="{e(D.CV_PDF)}" download>CV en PDF</a>
       <a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram</a>
     </nav>
   </div>
-  <div class="pie-legal mono"><span>© 2026 {e(D.NOMBRE)}</span><span>{e(D.CIUDAD)} · Desde {D.DESDE}</span></div>
+  <div class="pie-legal mono"><span>© 2026 {e(D.NOMBRE)}</span><span>{e(D.CIUDAD)} · {e(D.PUESTO)}</span></div>
 </footer>"""
 
 
@@ -72,14 +73,14 @@ def inicio():
     hero_img = C.img("mercyme", "07.jpg")
     sel = [D.por_slug(s) for s in ["gallucci", "mercyme", "nahomi-martinez", "bobby-charles", "for-king-country", "qatar-2022", "crowder", "luis-benites"]]
     vivo = []
-    for slug, n in [("mercyme", "19.jpg"), ("crowder", "01.jpg"), ("for-king-country", "06.jpg"), ("mercyme", "21.jpg"),
-                    ("crowder", "17.jpg"), ("for-king-country", "05.jpg"), ("mercyme", "03.jpg"), ("crowder", "14.jpg"),
-                    ("for-king-country", "01.jpg"), ("mercyme", "08.jpg")]:
+    for slug, n in [("mercyme", "19.jpg"), ("bobby-charles", "01.jpg"), ("nahomi-martinez", "03.jpg"), ("crowder", "17.jpg"),
+                    ("qatar-2022", "04.jpg"), ("gallucci", "00.jpg"), ("luis-benites", "05.jpg"), ("physo", "02.jpg"),
+                    ("for-king-country", "06.jpg"), ("matchdays", "02.jpg"), ("zena-coffee", "00.jpg"), ("valorant", "02.jpg")]:
         w, h = C.medida(slug, n)
         p = D.por_slug(slug)
         vivo.append(f'<a class="vivo-item{" vivo-v" if h > w else ""}" href="{slug}.html" data-cursor="ver">'
-                    f'<span class="vivo-marco"><img src="{C.img(slug, n)}" alt="{e(p["corto"])} en vivo" loading="lazy"></span>'
-                    f'<span class="vivo-pie mono">{e(p["corto"])} · {n[:2]}</span></a>')
+                    f'<span class="vivo-marco"><img src="{C.img(slug, n)}" alt="{e(p["titulo"])}" loading="lazy"></span>'
+                    f'<span class="vivo-pie mono">{e(p["corto"])} · {e(D.CATEGORIAS[p["cat"]])}</span></a>')
     videos = []
     for s in ["gallucci", "bobby-charles"]:
         p = D.por_slug(s)
@@ -108,7 +109,7 @@ def inicio():
 
   <section class="manifiesto envoltura">
     <p class="mono eti">Manifiesto</p>
-    <p class="manif-t" data-iluminar>Trabajo donde la luz cambia rápido. Un escenario a oscuras, una campaña que sale mañana, un partido que empieza a las tres. Mi trabajo es estar listo cuando pasa, y que la imagen lo cuente sin explicación.</p>
+    <p class="manif-t" data-iluminar>Trabajo donde las cosas pasan rápido. Una campaña que sale mañana, un concierto a oscuras, un partido que empieza a las tres, una marca que publica todos los días. Mi trabajo es estar listo y que la imagen lo cuente sin explicación.</p>
   </section>
 
   <section class="envoltura bloque">
@@ -118,7 +119,7 @@ def inicio():
 
   <section class="vivo" data-horizontal>
     <div class="vivo-pin">
-      <div class="vivo-cab envoltura"><p class="mono eti">En vivo</p><h2>Tres conciertos,<br><i>sesenta fotografías.</i></h2></div>
+      <div class="vivo-cab envoltura"><p class="mono eti">Seis disciplinas</p><h2>Video, foto, deporte,<br><i>marca, web y gaming.</i></h2></div>
       <div class="vivo-pista" data-pista>{"".join(vivo)}</div>
       <div class="vivo-barra" aria-hidden="true"><span data-barra></span></div>
     </div>
@@ -136,6 +137,11 @@ def inicio():
   <section class="envoltura bloque">
     <div class="bloque-cab"><p class="mono eti">Video para campañas</p><p class="bloque-nota">Montaje, motion y versiones para redes.</p></div>
     <div class="videos">{"".join(videos)}</div>
+  </section>
+
+  <section class="envoltura bloque">
+    <div class="bloque-cab"><p class="mono eti">Recorrido · desde 2018</p><a class="enlace" href="cv.html" data-cursor="ir">Ver currículum completo</a></div>
+    {C.recorrido()}
   </section>
 
   <section class="envoltura bloque">
@@ -176,10 +182,7 @@ def proyecto(p):
     sig = D.siguiente(p["slug"])
     datos = "".join(f'<div class="dato"><b>{e(v)}</b><span>{e(t)}</span></div>' for v, t in p["datos"])
     textos = "".join(f"<p>{e(t)}</p>" for t in p["texto"])
-    video = ""
-    if p.get("video"):
-        video = (f'<a class="boton-luz" href="{e(D.url_behance(p))}" target="_blank" rel="noopener" data-cursor="ver">'
-                 f'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>Ver los videos en Behance</a>')
+    video = C.bloque_video(p)
     cuerpo = f"""<main>
   <section class="p-hero" data-p-hero>
     <div class="p-hero-img"><img src="{C.img(p['slug'], p['portada'])}" alt="{e(p['titulo'])}"></div>
@@ -190,17 +193,18 @@ def proyecto(p):
   </section>
   <section class="envoltura p-intro">
     <dl class="p-meta">
+      <div><dt class="mono">Cliente</dt><dd>{e(p['cliente'])}</dd></div>
+      <div><dt class="mono">Mi rol</dt><dd>{e(D.ROLES[p['cat']])}</dd></div>
       <div><dt class="mono">Disciplina</dt><dd>{e(D.CATEGORIAS[p['cat']])}</dd></div>
       <div><dt class="mono">Año</dt><dd>{e(p['ano'])}</dd></div>
       <div><dt class="mono">Herramientas</dt><dd>{e(', '.join(p['herr']))}</dd></div>
-      <div><dt class="mono">Behance</dt><dd><a href="{e(D.url_behance(p))}" target="_blank" rel="noopener">Ver proyecto original</a></dd></div>
     </dl>
     <div class="p-texto">
       <p class="p-resumen" data-iluminar>{e(p['resumen'])}</p>
       {textos}
-      {video}
     </div>
   </section>
+  {f'<section class="envoltura">{video}</section>' if video else ''}
   <section class="envoltura"><div class="datos">{datos}</div></section>
   <section class="envoltura p-galeria">{C.galeria(p['slug'])}</section>
   <a class="siguiente" href="{sig['slug']}.html" data-cursor="siguiente">
@@ -221,19 +225,20 @@ def proyecto(p):
 
 def sobre():
     bio = "".join(f"<p>{e(x)}</p>" for x in D.BIO_LARGA)
-    exp = "".join(f'<li><b>{e(a)}</b><span>{e(b)}</span><span class="mono">{e(c)}</span></li>' for a, b, c in D.EXPERIENCIA)
+    exp = "".join(f'<li><b>{e(x["puesto"])}</b><span>{e(x["empresa"])}</span><span class="mono">{e(x["fechas"])}</span></li>' for x in D.EXPERIENCIA)
     herr = "".join(f"<li>{e(h)}</li>" for h in D.HERRAMIENTAS)
     cuerpo = f"""<main class="envoltura">
   <section class="sobre">
     <figure class="sobre-foto" data-foco-css>
       <img src="{C.retrato()}" alt="Retrato de {e(D.NOMBRE)}">
-      <figcaption class="mono">{e(D.CIUDAD)} · Desde {D.DESDE} en Behance</figcaption>
+      <figcaption class="mono">{e(D.CIUDAD)} · Origen {e(D.ORIGEN)}</figcaption>
     </figure>
     <div class="sobre-txt">
       <p class="mono eti">Sobre mí</p>
       <h1 data-partir>Diseño, cámara<br><i>y corte.</i></h1>
       {bio}
       <p class="mono disponible"><span class="punto" aria-hidden="true"></span>{e(D.DISPONIBLE)}</p>
+      <p class="sobre-acc"><a class="boton-luz" href="cv.html" data-cursor="ir">Ver currículum</a><a class="boton-luz fantasma" href="{e(D.CV_PDF)}" download>Descargar PDF</a></p>
     </div>
   </section>
   <section class="bloque sobre-dos">
@@ -252,9 +257,9 @@ def contacto():
     <button type="button" class="correo-grande" data-copiar="{e(D.CORREO)}" data-cursor="copiar">{e(D.CORREO)}</button>
     <p class="mono" data-copiado-g role="status">Haz clic para copiar el correo</p>
     <div class="contacto-cols">
-      <div><p class="mono eti">Redes</p><a href="{e(D.BEHANCE)}" target="_blank" rel="noopener">Behance</a><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram · {e(D.INSTAGRAM_T)}</a></div>
+      <div><p class="mono eti">Perfil</p><a href="cv.html">Currículum</a><a href="{e(D.CV_PDF)}" download>CV en PDF</a><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram · {e(D.INSTAGRAM_T)}</a></div>
       <div><p class="mono eti">Base</p><p>{e(D.CIUDAD)}<br>Origen: {e(D.ORIGEN)}</p></div>
-      <div><p class="mono eti">Idiomas</p><p>Español<br>Inglés</p></div>
+      <div><p class="mono eti">Idiomas</p><p>{"<br>".join(e(a + " · " + b) for a, b in D.IDIOMAS)}</p></div>
     </div>
   </section>
 </main>"""
@@ -262,8 +267,19 @@ def contacto():
                        envoltura(cuerpo, "contacto.html"), clase="pg-contacto")
 
 
+def cv():
+    cuerpo = f"""<main class="envoltura">
+  <section class="pag-cab">
+    <p class="mono eti">Currículum · {e(D.NOMBRE)}</p>
+    <h1 data-partir>Ocho años<br><i>de oficio.</i></h1>
+  </section>
+  {C.cv_secciones("mono eti")}
+</main>"""
+    return C.documento(f"Currículum · {D.NOMBRE}", D.CV_RESUMEN, FUENTES, envoltura(cuerpo, "cv.html"), clase="pg-cv")
+
+
 def paginas():
-    out = {"index.html": inicio(), "trabajo.html": trabajo(), "sobre.html": sobre(), "contacto.html": contacto()}
+    out = {"index.html": inicio(), "trabajo.html": trabajo(), "sobre.html": sobre(), "cv.html": cv(), "contacto.html": contacto()}
     for p in D.PROYECTOS:
         out[p["slug"] + ".html"] = proyecto(p)
     return out

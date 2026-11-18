@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Contenido del portafolio, tomado de behance.net/estebanguimi.
+"""Contenido del portafolio: proyectos, perfil y currículum de Esteban Guillen.
 
 Edita aquí y ejecuta:  python3 _fuente/construir.py
 """
@@ -15,32 +15,70 @@ ROL = "Diseñador, editor de video y fotógrafo"
 CIUDAD = "Miami, FL"
 ORIGEN = "Perú"
 CORREO = "estebanguimi@gmail.com"
-BEHANCE = "https://www.behance.net/estebanguimi"
 INSTAGRAM = "https://www.instagram.com/estebanguimi_official/"
 INSTAGRAM_T = "@estebanguimi_official"
 DESDE = "2020"
 DISPONIBLE = "Disponible como autónomo y a tiempo completo"
 
 BIO = (
-    "Diseñador y editor de video en Miami. Hago contenido político que supera el millón de vistas, "
-    "fotografía conciertos en vivo y diseño piezas deportivas para clubes y jugadoras del fútbol peruano."
+    "Diseñador gráfico y editor de video con base en Miami. Edito y grabo video para campañas políticas en "
+    "Harris Media Group, fotografío conciertos y diseño piezas deportivas y de marca. Más de 1,3 millones de vistas en mis videos."
 )
 BIO_LARGA = [
-    "Empecé como diseñador gráfico en Perú, en Digitalia TEC, Arturo's Burger y Soporte Total GUIMI. "
-    "Ahí aprendí lo que pide el día a día: piezas para redes cada semana, fechas que no se mueven y clientes que necesitan resultados.",
-    "En el fútbol encontré mi lenguaje: matchdays, fixtures y piezas de jugador para Universitario, Sport Huancayo, "
-    "Alianza Lima y la selección femenina. Collage, textura, tipografía gigante y una sola idea fuerte por afiche.",
-    "Hoy trabajo en Miami entre el video y la cámara. Edito campañas políticas que suman más de 1,3 millones de vistas "
-    "y fotografío conciertos de MercyMe, Crowder y for KING & COUNTRY.",
+    "Empecé en 2018 como diseñador gráfico en Perú: logotipos, anuncios y contenido semanal para Soporte Total GUIMI, "
+    "Arturo's Burger y Digitalia TEC. Ahí aprendí a trabajar con fechas fijas y a diseñar para que una pieza venda.",
+    "Entre 2022 y 2024 trabajé por mi cuenta: matchdays para Universitario, Sport Huancayo y la selección femenina, "
+    "la cobertura del Mundial Qatar 2022, el contenido de Physo, la tienda de Zena Coffee y overlays para streaming.",
+    "Hoy estoy en Miami. En Harris Media Group edito, animo y grabo video para campañas en EE. UU. "
+    "(Sam Gallucci, NH Senate Republicans, Bobby Charles) y además fotografío conciertos de MercyMe, Crowder y for KING & COUNTRY.",
 ]
+
+# Currículum. Fechas y descripciones salen del currículum publicado y del perfil de Harris Media Group.
+PUESTO = "Editor de video y videógrafo · Diseñador gráfico"
+ANOS = "8"  # años de experiencia desde 2018
+CV_RESUMEN = (
+    "Diseñador gráfico y editor de video con 8 años de experiencia. Edito, animo y grabo video para campañas "
+    "políticas en EE. UU. (más de 1,3 millones de vistas), diseño sistemas de piezas para redes y marcas, "
+    "y hago fotografía de conciertos. Trabajo rápido, con fechas fijas y pensando en resultados."
+)
 EXPERIENCIA = [
-    ("Video y diseño político", "Campañas en EE. UU.", "2025 — hoy"),
-    ("Fotografía de conciertos", "Giras en Florida", "2025 — hoy"),
-    ("Diseñador gráfico", "Digitalia TEC · Perú", ""),
-    ("Diseñador gráfico", "Arturo's Burger · Perú", ""),
-    ("Diseñador gráfico", "Soporte Total GUIMI · Perú", ""),
+    {"puesto": "Editor de video y videógrafo", "empresa": "Harris Media Group", "lugar": "Miami, FL · EE. UU.",
+     "fechas": "2025 — hoy", "inicio": 2025, "fin": 2026,
+     "puntos": ["Edición, motion graphics y grabación de video para campañas políticas en EE. UU.",
+                "Sam Gallucci y NH Senate Republicans: más de 900K vistas.",
+                "Bobby Charles for Maine Governor: 436K+ vistas, más de 20 piezas y 20K+ interacciones."],
+     "proyectos": ["gallucci", "bobby-charles"]},
+    {"puesto": "Fotógrafo de conciertos", "empresa": "Independiente", "lugar": "Florida · EE. UU.",
+     "fechas": "2025 — hoy", "inicio": 2025, "fin": 2026,
+     "puntos": ["Cobertura en vivo y edición de MercyMe, Crowder y for KING & COUNTRY.",
+                "60 fotografías entregadas en tres conciertos."],
+     "proyectos": ["mercyme", "crowder", "for-king-country"]},
+    {"puesto": "Diseñador gráfico independiente", "empresa": "Clubes, jugadores y marcas", "lugar": "Lima · Perú",
+     "fechas": "2022 — 2024", "inicio": 2022, "fin": 2024,
+     "puntos": ["Matchdays y piezas de jugador para Universitario, Sport Huancayo, Nahomi Martínez y Luis Benites.",
+                "Sistema de 37 piezas para la cobertura del Mundial Qatar 2022.",
+                "Redes de Physo, landing y tienda de Zena Coffee y overlays para streaming."],
+     "proyectos": ["matchdays", "nahomi-martinez", "luis-benites", "qatar-2022", "physo", "zena-coffee", "valorant"]},
+    {"puesto": "Diseñador gráfico", "empresa": "Digitalia TEC", "lugar": "Perú",
+     "fechas": "feb. 2022 — jul. 2022", "inicio": 2022, "fin": 2022,
+     "puntos": ["Anuncios para promocionar los productos y la marca de la empresa."], "proyectos": []},
+    {"puesto": "Diseñador gráfico", "empresa": "Arturo's Burger", "lugar": "Perú",
+     "fechas": "ene. 2020 — jul. 2022", "inicio": 2020, "fin": 2022,
+     "puntos": ["Piezas para redes, promociones y publicidad del restaurante."], "proyectos": []},
+    {"puesto": "Diseñador gráfico", "empresa": "Soporte Total GUIMI S.A.", "lugar": "Perú",
+     "fechas": "mar. 2018 — jul. 2022", "inicio": 2018, "fin": 2022,
+     "puntos": ["Diseño del logotipo y de los anuncios de la empresa."], "proyectos": []},
 ]
-HERRAMIENTAS = ["Photoshop", "Illustrator", "Lightroom", "Premiere Pro", "After Effects", "Figma"]
+HABILIDADES = [
+    ("Video", ["Edición", "Motion graphics", "Grabación", "Versiones para redes", "Subtítulos y rótulos"]),
+    ("Diseño gráfico", ["Identidad y logotipos", "Piezas para redes", "Publicidad", "Diseño deportivo", "Sistemas de plantillas"]),
+    ("Fotografía", ["Conciertos y eventos en vivo", "Edición y revelado", "Selección y entrega"]),
+    ("Web y streaming", ["Diseño de interfaces en Figma", "WordPress", "Dominios y hosting", "Overlays para OBS Studio"]),
+]
+HERRAMIENTAS = ["Premiere Pro", "After Effects", "Photoshop", "Illustrator", "Lightroom", "Figma", "WordPress", "OBS Studio", "Office"]
+IDIOMAS = [("Español", "Nativo"), ("Inglés", "Intermedio")]
+CIFRAS = [("1,3M+", "vistas en video político"), ("12", "proyectos destacados"), ("196", "piezas publicadas"), ("8", "años de experiencia")]
+CV_PDF = "esteban-guillen-cv.pdf"
 
 SERVICIOS = [
     ("Video para campañas", "Edición, motion y versiones para redes de candidatos y causas."),
@@ -49,6 +87,15 @@ SERVICIOS = [
     ("Branding y redes", "Sistemas visuales para marcas y contenido mensual."),
     ("Web y UI", "Landing pages y tiendas diseñadas en Figma."),
 ]
+
+ROLES = {
+    "video": "Edición, motion graphics y grabación",
+    "foto": "Fotografía y revelado",
+    "deporte": "Diseño gráfico",
+    "marca": "Diseño gráfico y sistema para redes",
+    "web": "Diseño de interfaz",
+    "gaming": "Diseño de overlays",
+}
 
 CATEGORIAS = {
     "video": "Video político",
@@ -61,8 +108,7 @@ CATEGORIAS = {
 
 PROYECTOS = [
     {
-        "slug": "gallucci", "behance": "258616689/Sam-Gallucci-NH-Senate-republicans-900K-Views",
-        "titulo": "Sam Gallucci & NH Senate Republicans", "corto": "Sam Gallucci",
+        "slug": "gallucci", "cliente": "Harris Media Group · Sam Gallucci y NH Senate Republicans", "titulo": "Sam Gallucci & NH Senate Republicans", "corto": "Sam Gallucci",
         "cat": "video", "ano": "2026", "cifra": "900K+", "cifra_t": "vistas",
         "herr": ["Premiere Pro", "After Effects"], "portada": "00.jpg",
         "resumen": "Contenido de video para la campaña de Sam Gallucci y los republicanos del Senado de New Hampshire.",
@@ -75,8 +121,7 @@ PROYECTOS = [
         "video": True,
     },
     {
-        "slug": "bobby-charles", "behance": "258610673/Bobby-Charles-Political-content-436k-views",
-        "titulo": "Bobby Charles for Maine Governor", "corto": "Bobby Charles",
+        "slug": "bobby-charles", "cliente": "Harris Media Group · Bobby Charles for Maine Governor", "titulo": "Bobby Charles for Maine Governor", "corto": "Bobby Charles",
         "cat": "video", "ano": "2026", "cifra": "436K+", "cifra_t": "vistas",
         "herr": ["Photoshop", "Premiere Pro", "After Effects"], "portada": "00.jpg",
         "resumen": "Video, motion y diseño para redes de la campaña de Bobby Charles a gobernador de Maine.",
@@ -89,8 +134,7 @@ PROYECTOS = [
         "video": True,
     },
     {
-        "slug": "mercyme", "behance": "248361057/Mercyme-2025-Live-Concert-Photography",
-        "titulo": "MercyMe 2025", "corto": "MercyMe",
+        "slug": "mercyme", "cliente": "MercyMe · gira 2025", "titulo": "MercyMe 2025", "corto": "MercyMe",
         "cat": "foto", "ano": "2026", "cifra": "22", "cifra_t": "fotografías",
         "herr": ["Lightroom", "Photoshop"], "portada": "19.jpg",
         "resumen": "Fotografía del concierto de MercyMe en su gira 2025.",
@@ -101,8 +145,7 @@ PROYECTOS = [
         "datos": [("22", "fotografías"), ("2025", "gira"), ("Live", "concierto")],
     },
     {
-        "slug": "crowder", "behance": "248194803/CROWDER-Live-Concert-Photography",
-        "titulo": "Crowder Live", "corto": "Crowder",
+        "slug": "crowder", "cliente": "Crowder · concierto", "titulo": "Crowder Live", "corto": "Crowder",
         "cat": "foto", "ano": "2026", "cifra": "22", "cifra_t": "fotografías",
         "herr": ["Lightroom", "Photoshop"], "portada": "17.jpg",
         "resumen": "Fotografía del concierto de Crowder.",
@@ -113,8 +156,7 @@ PROYECTOS = [
         "datos": [("22", "fotografías"), ("4", "atmósferas de luz"), ("B/N", "cierre")],
     },
     {
-        "slug": "for-king-country", "behance": "248012185/For-King-Country-Live-Concert-Photography",
-        "titulo": "for KING & COUNTRY", "corto": "for KING & COUNTRY",
+        "slug": "for-king-country", "cliente": "for KING & COUNTRY · concierto", "titulo": "for KING & COUNTRY", "corto": "for KING & COUNTRY",
         "cat": "foto", "ano": "2026", "cifra": "16", "cifra_t": "fotografías",
         "herr": ["Lightroom", "Photoshop"], "portada": "06.jpg",
         "resumen": "Fotografía del concierto de for KING & COUNTRY.",
@@ -122,11 +164,10 @@ PROYECTOS = [
             "Movimiento, contraluz y público: la banda en el escenario y entre la gente.",
             "Tratamiento con grano fino y tonos apagados para que la luz de escena sea la protagonista.",
         ],
-        "datos": [("16", "fotografías"), ("61", "visualizaciones en Behance"), ("Live", "concierto")],
+        "datos": [("16", "fotografías"), ("B/N + color", "tratamiento"), ("Live", "concierto")],
     },
     {
-        "slug": "matchdays", "behance": "176711337/Matchdays-2022-23",
-        "titulo": "Matchday's 2022–23", "corto": "Matchday's",
+        "slug": "matchdays", "cliente": "Clubes del fútbol peruano", "titulo": "Matchday's 2022–23", "corto": "Matchday's",
         "cat": "deporte", "ano": "2023", "cifra": "22", "cifra_t": "afiches",
         "herr": ["Photoshop", "Illustrator"], "portada": "02.jpg",
         "resumen": "Afiches de partido, fixtures y piezas de jugador para el fútbol peruano en la temporada 2022–23.",
@@ -137,8 +178,7 @@ PROYECTOS = [
         "datos": [("22", "afiches"), ("6+", "clubes"), ("2022–23", "temporada")],
     },
     {
-        "slug": "nahomi-martinez", "behance": "173785229/Nahomi-Martinez-Matchdays",
-        "titulo": "Nahomi Martínez Matchday's", "corto": "Nahomi Martínez",
+        "slug": "nahomi-martinez", "cliente": "Nahomi Martínez · futbolista", "titulo": "Nahomi Martínez Matchday's", "corto": "Nahomi Martínez",
         "cat": "deporte", "ano": "2023", "cifra": "16", "cifra_t": "afiches",
         "herr": ["Photoshop", "Illustrator"], "portada": "03.jpg",
         "resumen": "Serie de matchdays para Nahomi Martínez, jugadora de Universitario y de la selección peruana.",
@@ -146,11 +186,10 @@ PROYECTOS = [
             "Una temporada completa contada en afiches verticales: crema y granate de Universitario, rojo de la selección.",
             "Texturas de mármol líquido, collage de recortes y tipografía que envuelve a la jugadora.",
         ],
-        "datos": [("16", "afiches"), ("67", "visualizaciones en Behance"), ("2022–23", "temporada")],
+        "datos": [("16", "afiches"), ("2", "camisetas: club y selección"), ("2022–23", "temporada")],
     },
     {
-        "slug": "luis-benites", "behance": "176681361/Luis-Benites-Matchdays",
-        "titulo": "Luis Benites Matchday's", "corto": "Luis Benites",
+        "slug": "luis-benites", "cliente": "Luis Benites · Sport Huancayo", "titulo": "Luis Benites Matchday's", "corto": "Luis Benites",
         "cat": "deporte", "ano": "2023", "cifra": "15", "cifra_t": "afiches",
         "herr": ["Photoshop", "Illustrator"], "portada": "05.jpg",
         "resumen": "Matchdays para Luis Benites, el número 21 de Sport Huancayo.",
@@ -161,8 +200,7 @@ PROYECTOS = [
         "datos": [("15", "afiches"), ("21", "dorsal"), ("2022–23", "temporada")],
     },
     {
-        "slug": "qatar-2022", "behance": "159083101/QATAR-2022-branding",
-        "titulo": "Qatar 2022", "corto": "Qatar 2022",
+        "slug": "qatar-2022", "cliente": "Cobertura del Mundial para redes", "titulo": "Qatar 2022", "corto": "Qatar 2022",
         "cat": "marca", "ano": "2022", "cifra": "37", "cifra_t": "piezas",
         "herr": ["Photoshop", "Illustrator"], "portada": "04.jpg",
         "resumen": "Sistema de piezas para redes durante la Copa Mundial de la FIFA Qatar 2022.",
@@ -173,8 +211,7 @@ PROYECTOS = [
         "datos": [("37", "piezas"), ("8", "sedes"), ("32", "selecciones")],
     },
     {
-        "slug": "physo", "behance": "192119917/Physiotherapy-Center-Social-Media",
-        "titulo": "Physo · Centro de fisioterapia", "corto": "Physo",
+        "slug": "physo", "cliente": "Physo · Santiago de Surco, Lima", "titulo": "Physo · Centro de fisioterapia", "corto": "Physo",
         "cat": "marca", "ano": "2024", "cifra": "30", "cifra_t": "publicaciones",
         "herr": ["Photoshop", "Figma"], "portada": "02.jpg",
         "resumen": "Contenido para redes de Physo, un centro de fisioterapia en Santiago de Surco, Lima.",
@@ -185,8 +222,7 @@ PROYECTOS = [
         "datos": [("30", "publicaciones"), ("5", "pasos de evaluación"), ("3", "colores de marca")],
     },
     {
-        "slug": "zena-coffee", "behance": "214200871/Landing-page-for-Zena-Coffee-Store",
-        "titulo": "Zena Coffee Store", "corto": "Zena Coffee",
+        "slug": "zena-coffee", "cliente": "Café Zena", "titulo": "Zena Coffee Store", "corto": "Zena Coffee",
         "cat": "web", "ano": "2024", "cifra": "2", "cifra_t": "pantallas",
         "herr": ["Photoshop", "Figma"], "portada": "01.jpg",
         "resumen": "Landing page y tienda para Café Zena.",
@@ -197,8 +233,7 @@ PROYECTOS = [
         "datos": [("2", "pantallas"), ("4", "tonos de café"), ("Figma", "diseño")],
     },
     {
-        "slug": "valorant", "behance": "141295547/Overlays-Valorant-Multicolor",
-        "titulo": "Overlays Valorant Multicolor", "corto": "Valorant",
+        "slug": "valorant", "cliente": "Transmisiones en Twitch", "titulo": "Overlays Valorant Multicolor", "corto": "Valorant",
         "cat": "gaming", "ano": "2022", "cifra": "3", "cifra_t": "pantallas",
         "herr": ["Photoshop"], "portada": "02.jpg",
         "resumen": "Paquete de overlays para transmisiones de Valorant.",
@@ -228,6 +263,3 @@ def anterior(s):
     i = [p["slug"] for p in PROYECTOS].index(s)
     return PROYECTOS[i - 1]
 
-
-def url_behance(p):
-    return "https://www.behance.net/gallery/" + p["behance"]

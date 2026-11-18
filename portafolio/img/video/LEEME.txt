@@ -1,0 +1,1 @@
+Copia aquí los videos de campaña con el nombre <proyecto>-<n>.mp4 (por ejemplo gallucci-1.mp4, bobby-charles-1.mp4) y vuelve a construir: aparecerán dentro de la página del proyecto.

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Construye las tres webs:  python3 _fuente/construir.py [luz matchday estudio]"""
+"""Construye las webs:  NODE_PATH=$(npm root -g) python3 _fuente/construir.py [luz matchday estudio mesa alaire recorte]
+
+También genera el currículum en PDF de cada una (SIN_PDF=1 para saltarlo)."""
 import importlib
 import os
 import shutil
@@ -10,7 +12,7 @@ RAIZ = os.path.dirname(AQUI)
 sys.path.insert(0, AQUI)
 import comun  # noqa: E402
 
-SITIOS = ["luz", "matchday", "estudio"]
+SITIOS = ["luz", "matchday", "estudio", "mesa", "alaire", "recorte"]
 
 
 def construir(nombre, destino=None, prefijo="../img/"):
@@ -24,6 +26,12 @@ def construir(nombre, destino=None, prefijo="../img/"):
     for archivo in os.listdir(os.path.join(AQUI, nombre)):
         shutil.copyfile(os.path.join(AQUI, nombre, archivo), os.path.join(destino, archivo))
     shutil.copytree(os.path.join(AQUI, "vendor"), os.path.join(destino, "vendor"), dirs_exist_ok=True)
+    if os.environ.get("SIN_PDF") != "1":
+        try:
+            import cv
+            cv.generar(nombre, destino)
+        except Exception as ex:  # el PDF necesita Node y Playwright
+            print("  (sin PDF del currículum:", ex, ")")
     print("ok", nombre)
 
 
