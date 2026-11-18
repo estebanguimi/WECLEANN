@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Contenido del portafolio: proyectos, perfil y currículum de Esteban Guillen.
+"""Portfolio content: projects, profile and résumé of Esteban Guillen.
 
-Edita aquí y ejecuta:  python3 _fuente/construir.py
+Edit here and run:  python3 _fuente/construir.py
 """
 import json
 import os
@@ -11,237 +11,237 @@ MEDIDAS = json.load(open(os.path.join(os.path.dirname(AQUI), "img", "medidas.jso
 
 NOMBRE = "Esteban Guillen"
 NOMBRE_CORTO = "Guillen"
-ROL = "Diseñador, editor de video y fotógrafo"
+ROL = "Designer, video editor and photographer"
 CIUDAD = "Miami, FL"
-ORIGEN = "Perú"
+ORIGEN = "Peru"
 CORREO = "estebanguimi@gmail.com"
 INSTAGRAM = "https://www.instagram.com/estebanguimi_official/"
 INSTAGRAM_T = "@estebanguimi_official"
 DESDE = "2020"
-DISPONIBLE = "Disponible como autónomo y a tiempo completo"
+DISPONIBLE = "Available for full-time and freelance work"
 
 BIO = (
-    "Diseñador gráfico y editor de video con base en Miami. Edito y grabo video para campañas políticas en "
-    "Harris Media Group, fotografío conciertos y diseño piezas deportivas y de marca. Más de 1,3 millones de vistas en mis videos."
+    "Graphic designer and video editor based in Miami. I edit and shoot video for political campaigns at "
+    "Harris Media Group, photograph concerts and design sports and brand content. My videos have passed 1.3 million views."
 )
 BIO_LARGA = [
-    "Empecé en 2018 como diseñador gráfico en Perú: logotipos, anuncios y contenido semanal para Soporte Total GUIMI, "
-    "Arturo's Burger y Digitalia TEC. Ahí aprendí a trabajar con fechas fijas y a diseñar para que una pieza venda.",
-    "Entre 2022 y 2024 trabajé por mi cuenta: matchdays para Universitario, Sport Huancayo y la selección femenina, "
-    "la cobertura del Mundial Qatar 2022, el contenido de Physo, la tienda de Zena Coffee y overlays para streaming.",
-    "Hoy estoy en Miami. En Harris Media Group edito, animo y grabo video para campañas en EE. UU. "
-    "(Sam Gallucci, NH Senate Republicans, Bobby Charles) y además fotografío conciertos de MercyMe, Crowder y for KING & COUNTRY.",
+    "I started in 2018 as a graphic designer in Peru, making logos, ads and weekly content for Soporte Total GUIMI, "
+    "Arturo's Burger and Digitalia TEC. That is where I learned to work to fixed deadlines and to design pieces that sell.",
+    "From 2022 to 2024 I worked freelance: matchday posters for Universitario, Sport Huancayo and the Peru women's national team, "
+    "social coverage of the Qatar 2022 World Cup, content for Physo, the Zena Coffee online store and streaming overlays.",
+    "Today I am based in Miami. At Harris Media Group I edit, animate and shoot video for U.S. campaigns "
+    "(Sam Gallucci, NH Senate Republicans, Bobby Charles), and I also photograph concerts for MercyMe, Crowder and for KING & COUNTRY.",
 ]
 
-# Currículum. Fechas y descripciones salen del currículum publicado y del perfil de Harris Media Group.
-PUESTO = "Editor de video y videógrafo · Diseñador gráfico"
-ANOS = "8"  # años de experiencia desde 2018
+# Résumé. Dates and descriptions come from the published résumé and the Harris Media Group profile.
+PUESTO = "Video Editor & Videographer · Graphic Designer"
+ANOS = "8"  # years of experience since 2018
 CV_RESUMEN = (
-    "Diseñador gráfico y editor de video con 8 años de experiencia. Edito, animo y grabo video para campañas "
-    "políticas en EE. UU. (más de 1,3 millones de vistas), diseño sistemas de piezas para redes y marcas, "
-    "y hago fotografía de conciertos. Trabajo rápido, con fechas fijas y pensando en resultados."
+    "Graphic designer and video editor with 8 years of experience. I edit, animate and shoot video for U.S. "
+    "political campaigns (1.3M+ views), design content systems for social media and brands, "
+    "and photograph live concerts. I work fast, to fixed deadlines, with results in mind."
 )
 EXPERIENCIA = [
-    {"puesto": "Editor de video y videógrafo", "empresa": "Harris Media Group", "lugar": "Miami, FL · EE. UU.",
-     "fechas": "2025 — hoy", "inicio": 2025, "fin": 2026,
-     "puntos": ["Edición, motion graphics y grabación de video para campañas políticas en EE. UU.",
-                "Sam Gallucci y NH Senate Republicans: más de 900K vistas.",
-                "Bobby Charles for Maine Governor: 436K+ vistas, más de 20 piezas y 20K+ interacciones."],
+    {"puesto": "Video Editor & Videographer", "empresa": "Harris Media Group", "lugar": "Miami, FL · USA",
+     "fechas": "2025 — Present", "inicio": 2025, "fin": 2026,
+     "puntos": ["Video editing, motion graphics and filming for U.S. political campaigns.",
+                "Sam Gallucci and NH Senate Republicans: 900K+ views.",
+                "Bobby Charles for Maine Governor: 436K+ views, 20+ pieces and 20K+ engagements."],
      "proyectos": ["gallucci", "bobby-charles"]},
-    {"puesto": "Fotógrafo de conciertos", "empresa": "Independiente", "lugar": "Florida · EE. UU.",
-     "fechas": "2025 — hoy", "inicio": 2025, "fin": 2026,
-     "puntos": ["Cobertura en vivo y edición de MercyMe, Crowder y for KING & COUNTRY.",
-                "60 fotografías entregadas en tres conciertos."],
+    {"puesto": "Concert Photographer", "empresa": "Freelance", "lugar": "Florida · USA",
+     "fechas": "2025 — Present", "inicio": 2025, "fin": 2026,
+     "puntos": ["Live coverage and editing for MercyMe, Crowder and for KING & COUNTRY.",
+                "60 photographs delivered across three concerts."],
      "proyectos": ["mercyme", "crowder", "for-king-country"]},
-    {"puesto": "Diseñador gráfico independiente", "empresa": "Clubes, jugadores y marcas", "lugar": "Lima · Perú",
+    {"puesto": "Freelance Graphic Designer", "empresa": "Clubs, players and brands", "lugar": "Lima · Peru",
      "fechas": "2022 — 2024", "inicio": 2022, "fin": 2024,
-     "puntos": ["Matchdays y piezas de jugador para Universitario, Sport Huancayo, Nahomi Martínez y Luis Benites.",
-                "Sistema de 37 piezas para la cobertura del Mundial Qatar 2022.",
-                "Redes de Physo, landing y tienda de Zena Coffee y overlays para streaming."],
+     "puntos": ["Matchday and player graphics for Universitario, Sport Huancayo, Nahomi Martínez and Luis Benites.",
+                "A 37-piece content system for the Qatar 2022 World Cup.",
+                "Social media for Physo, landing page and store for Zena Coffee, and streaming overlays."],
      "proyectos": ["matchdays", "nahomi-martinez", "luis-benites", "qatar-2022", "physo", "zena-coffee", "valorant"]},
-    {"puesto": "Diseñador gráfico", "empresa": "Digitalia TEC", "lugar": "Perú",
-     "fechas": "feb. 2022 — jul. 2022", "inicio": 2022, "fin": 2022,
-     "puntos": ["Anuncios para promocionar los productos y la marca de la empresa."], "proyectos": []},
-    {"puesto": "Diseñador gráfico", "empresa": "Arturo's Burger", "lugar": "Perú",
-     "fechas": "ene. 2020 — jul. 2022", "inicio": 2020, "fin": 2022,
-     "puntos": ["Piezas para redes, promociones y publicidad del restaurante."], "proyectos": []},
-    {"puesto": "Diseñador gráfico", "empresa": "Soporte Total GUIMI S.A.", "lugar": "Perú",
-     "fechas": "mar. 2018 — jul. 2022", "inicio": 2018, "fin": 2022,
-     "puntos": ["Diseño del logotipo y de los anuncios de la empresa."], "proyectos": []},
+    {"puesto": "Graphic Designer", "empresa": "Digitalia TEC", "lugar": "Peru",
+     "fechas": "Feb 2022 — Jul 2022", "inicio": 2022, "fin": 2022,
+     "puntos": ["Ads promoting the company's products and brand."], "proyectos": []},
+    {"puesto": "Graphic Designer", "empresa": "Arturo's Burger", "lugar": "Peru",
+     "fechas": "Jan 2020 — Jul 2022", "inicio": 2020, "fin": 2022,
+     "puntos": ["Social media content, promotions and advertising for the restaurant."], "proyectos": []},
+    {"puesto": "Graphic Designer", "empresa": "Soporte Total GUIMI S.A.", "lugar": "Peru",
+     "fechas": "Mar 2018 — Jul 2022", "inicio": 2018, "fin": 2022,
+     "puntos": ["Designed the company logo and its advertising."], "proyectos": []},
 ]
 HABILIDADES = [
-    ("Video", ["Edición", "Motion graphics", "Grabación", "Versiones para redes", "Subtítulos y rótulos"]),
-    ("Diseño gráfico", ["Identidad y logotipos", "Piezas para redes", "Publicidad", "Diseño deportivo", "Sistemas de plantillas"]),
-    ("Fotografía", ["Conciertos y eventos en vivo", "Edición y revelado", "Selección y entrega"]),
-    ("Web y streaming", ["Diseño de interfaces en Figma", "WordPress", "Dominios y hosting", "Overlays para OBS Studio"]),
+    ("Video", ["Editing", "Motion graphics", "Filming", "Social cut-downs", "Captions and titles"]),
+    ("Graphic design", ["Identity and logos", "Social media content", "Advertising", "Sports design", "Template systems"]),
+    ("Photography", ["Concerts and live events", "Editing and color grading", "Selection and delivery"]),
+    ("Web and streaming", ["UI design in Figma", "WordPress", "Domains and hosting", "OBS Studio overlays"]),
 ]
 HERRAMIENTAS = ["Premiere Pro", "After Effects", "Photoshop", "Illustrator", "Lightroom", "Figma", "WordPress", "OBS Studio", "Office"]
-IDIOMAS = [("Español", "Nativo"), ("Inglés", "Intermedio")]
-CIFRAS = [("1,3M+", "vistas en video político"), ("12", "proyectos destacados"), ("196", "piezas publicadas"), ("8", "años de experiencia")]
+IDIOMAS = [("Spanish", "Native"), ("English", "Intermediate")]
+CIFRAS = [("1.3M+", "views on political video"), ("12", "featured projects"), ("196", "published pieces"), ("8", "years of experience")]
 CV_PDF = "esteban-guillen-cv.pdf"
 
 SERVICIOS = [
-    ("Video para campañas", "Edición, motion y versiones para redes de candidatos y causas."),
-    ("Fotografía en vivo", "Conciertos y eventos: cobertura completa y entrega editada."),
-    ("Diseño deportivo", "Matchdays, fixtures, anuncios de fichaje y piezas de jugador."),
-    ("Branding y redes", "Sistemas visuales para marcas y contenido mensual."),
-    ("Web y UI", "Landing pages y tiendas diseñadas en Figma."),
+    ("Campaign video", "Editing, motion and social cut-downs for candidates and causes."),
+    ("Live photography", "Concerts and events: full coverage, edited and delivered."),
+    ("Sports design", "Matchday posters, fixtures, signing announcements and player graphics."),
+    ("Branding and social", "Visual systems for brands and monthly content."),
+    ("Web and UI", "Landing pages and online stores designed in Figma."),
 ]
 
 ROLES = {
-    "video": "Edición, motion graphics y grabación",
-    "foto": "Fotografía y revelado",
-    "deporte": "Diseño gráfico",
-    "marca": "Diseño gráfico y sistema para redes",
-    "web": "Diseño de interfaz",
-    "gaming": "Diseño de overlays",
+    "video": "Editing, motion graphics and filming",
+    "foto": "Photography and editing",
+    "deporte": "Graphic design",
+    "marca": "Graphic design and social media system",
+    "web": "Interface design",
+    "gaming": "Overlay design",
 }
 
 CATEGORIAS = {
-    "video": "Video político",
-    "foto": "Fotografía en vivo",
-    "deporte": "Diseño deportivo",
-    "marca": "Branding y redes",
-    "web": "Web y UI",
+    "video": "Political video",
+    "foto": "Live photography",
+    "deporte": "Sports design",
+    "marca": "Branding and social",
+    "web": "Web and UI",
     "gaming": "Gaming",
 }
 
 PROYECTOS = [
     {
-        "slug": "gallucci", "cliente": "Harris Media Group · Sam Gallucci y NH Senate Republicans", "titulo": "Sam Gallucci & NH Senate Republicans", "corto": "Sam Gallucci",
-        "cat": "video", "ano": "2026", "cifra": "900K+", "cifra_t": "vistas",
+        "slug": "gallucci", "cliente": "Harris Media Group · Sam Gallucci and NH Senate Republicans", "titulo": "Sam Gallucci & NH Senate Republicans", "corto": "Sam Gallucci",
+        "cat": "video", "ano": "2026", "cifra": "900K+", "cifra_t": "views",
         "herr": ["Premiere Pro", "After Effects"], "portada": "00.jpg",
-        "resumen": "Contenido de video para la campaña de Sam Gallucci y los republicanos del Senado de New Hampshire.",
+        "resumen": "Video content for Sam Gallucci's campaign and the New Hampshire Senate Republicans.",
         "texto": [
-            "Piezas cortas para redes con rótulos grandes, ritmo rápido y un mensaje por video.",
-            "Dos líneas de trabajo: los videos de Sam Gallucci, con 209K vistas en Ventura County, y el contenido "
-            "de contraste para NH Senate Republicans, con 607K vistas.",
+            "Short social videos with big titles, a fast pace and one message per video.",
+            "Two streams of work: Sam Gallucci's videos, with 209K views in Ventura County, and contrast content "
+            "for NH Senate Republicans, with 607K views.",
         ],
-        "datos": [("209K", "vistas · Sam Gallucci"), ("607K", "vistas · NH Senate Republicans"), ("900K+", "vistas en total")],
+        "datos": [("209K", "views · Sam Gallucci"), ("607K", "views · NH Senate Republicans"), ("900K+", "total views")],
         "video": True,
     },
     {
         "slug": "bobby-charles", "cliente": "Harris Media Group · Bobby Charles for Maine Governor", "titulo": "Bobby Charles for Maine Governor", "corto": "Bobby Charles",
-        "cat": "video", "ano": "2026", "cifra": "436K+", "cifra_t": "vistas",
+        "cat": "video", "ano": "2026", "cifra": "436K+", "cifra_t": "views",
         "herr": ["Photoshop", "Premiere Pro", "After Effects"], "portada": "00.jpg",
-        "resumen": "Video, motion y diseño para redes de la campaña de Bobby Charles a gobernador de Maine.",
+        "resumen": "Video, motion and social design for Bobby Charles's campaign for Governor of Maine.",
         "texto": [
-            "Una línea gráfica de campaña en azul marino, rojo y blanco: frases cortas en tipografía condensada, "
-            "retratos del candidato y comparaciones directas.",
-            "Más de veinte piezas producidas entre video y gráficas: Cut crime, Cut taxes, Not a career politician y The choice is clear.",
+            "A campaign look in navy, red and white: short lines in condensed type, "
+            "portraits of the candidate and direct comparisons.",
+            "More than twenty video and graphic pieces: Cut crime, Cut taxes, Not a career politician and The choice is clear.",
         ],
-        "datos": [("436K+", "vistas de video"), ("+20", "piezas producidas"), ("20K+", "interacciones en redes")],
+        "datos": [("436K+", "video views"), ("20+", "pieces produced"), ("20K+", "social engagements")],
         "video": True,
     },
     {
-        "slug": "mercyme", "cliente": "MercyMe · gira 2025", "titulo": "MercyMe 2025", "corto": "MercyMe",
-        "cat": "foto", "ano": "2026", "cifra": "22", "cifra_t": "fotografías",
+        "slug": "mercyme", "cliente": "MercyMe · 2025 tour", "titulo": "MercyMe 2025", "corto": "MercyMe",
+        "cat": "foto", "ano": "2026", "cifra": "22", "cifra_t": "photos",
         "herr": ["Lightroom", "Photoshop"], "portada": "19.jpg",
-        "resumen": "Fotografía del concierto de MercyMe en su gira 2025.",
+        "resumen": "Concert photography of MercyMe on their 2025 tour.",
         "texto": [
-            "Del set acústico con luces cálidas al cierre con confeti: la noche completa en una sola serie.",
-            "Edición en Lightroom buscando negros profundos y conservando el color de cada momento de luz.",
+            "From the acoustic set under warm light to the confetti finale: the whole night in a single series.",
+            "Edited in Lightroom for deep blacks while keeping the color of every lighting cue.",
         ],
-        "datos": [("22", "fotografías"), ("2025", "gira"), ("Live", "concierto")],
+        "datos": [("22", "photos"), ("2025", "tour"), ("Live", "concert")],
     },
     {
-        "slug": "crowder", "cliente": "Crowder · concierto", "titulo": "Crowder Live", "corto": "Crowder",
-        "cat": "foto", "ano": "2026", "cifra": "22", "cifra_t": "fotografías",
+        "slug": "crowder", "cliente": "Crowder · concert", "titulo": "Crowder Live", "corto": "Crowder",
+        "cat": "foto", "ano": "2026", "cifra": "22", "cifra_t": "photos",
         "herr": ["Lightroom", "Photoshop"], "portada": "17.jpg",
-        "resumen": "Fotografía del concierto de Crowder.",
+        "resumen": "Concert photography of Crowder.",
         "texto": [
-            "La serie sigue los cambios de luz del show: ámbar, rojo, azul y un final en blanco y negro.",
-            "Las letras proyectadas en pantalla quedan dentro del encuadre y se vuelven parte de la foto.",
+            "The series follows the show's lighting changes: amber, red, blue and a black-and-white ending.",
+            "The lyrics projected on screen stay inside the frame and become part of the photo.",
         ],
-        "datos": [("22", "fotografías"), ("4", "atmósferas de luz"), ("B/N", "cierre")],
+        "datos": [("22", "photos"), ("4", "lighting moods"), ("B&W", "finale")],
     },
     {
-        "slug": "for-king-country", "cliente": "for KING & COUNTRY · concierto", "titulo": "for KING & COUNTRY", "corto": "for KING & COUNTRY",
-        "cat": "foto", "ano": "2026", "cifra": "16", "cifra_t": "fotografías",
+        "slug": "for-king-country", "cliente": "for KING & COUNTRY · concert", "titulo": "for KING & COUNTRY", "corto": "for KING & COUNTRY",
+        "cat": "foto", "ano": "2026", "cifra": "16", "cifra_t": "photos",
         "herr": ["Lightroom", "Photoshop"], "portada": "06.jpg",
-        "resumen": "Fotografía del concierto de for KING & COUNTRY.",
+        "resumen": "Concert photography of for KING & COUNTRY.",
         "texto": [
-            "Movimiento, contraluz y público: la banda en el escenario y entre la gente.",
-            "Tratamiento con grano fino y tonos apagados para que la luz de escena sea la protagonista.",
+            "Movement, backlight and crowd: the band on stage and among the audience.",
+            "Fine grain and muted tones so the stage lighting takes the lead.",
         ],
-        "datos": [("16", "fotografías"), ("B/N + color", "tratamiento"), ("Live", "concierto")],
+        "datos": [("16", "photos"), ("B&W + color", "treatment"), ("Live", "concert")],
     },
     {
-        "slug": "matchdays", "cliente": "Clubes del fútbol peruano", "titulo": "Matchday's 2022–23", "corto": "Matchday's",
-        "cat": "deporte", "ano": "2023", "cifra": "22", "cifra_t": "afiches",
+        "slug": "matchdays", "cliente": "Peruvian football clubs", "titulo": "Matchday's 2022–23", "corto": "Matchday's",
+        "cat": "deporte", "ano": "2023", "cifra": "22", "cifra_t": "posters",
         "herr": ["Photoshop", "Illustrator"], "portada": "02.jpg",
-        "resumen": "Afiches de partido, fixtures y piezas de jugador para el fútbol peruano en la temporada 2022–23.",
+        "resumen": "Match posters, fixtures and player graphics for Peruvian football in the 2022–23 season.",
         "texto": [
-            "Universitario, Alianza Lima, Sport Huancayo, Sporting Cristal, Atlético Grau y la selección femenina de Perú.",
-            "Cada afiche busca una idea distinta: un podio de F1, un collage de Polaroids, fuego, cielos rosados o una diagonal roja y blanca.",
+            "Universitario, Alianza Lima, Sport Huancayo, Sporting Cristal, Atlético Grau and the Peru women's national team.",
+            "Every poster chases a different idea: an F1 podium, a Polaroid collage, fire, pink skies or a red-and-white diagonal.",
         ],
-        "datos": [("22", "afiches"), ("6+", "clubes"), ("2022–23", "temporada")],
+        "datos": [("22", "posters"), ("6+", "clubs"), ("2022–23", "season")],
     },
     {
-        "slug": "nahomi-martinez", "cliente": "Nahomi Martínez · futbolista", "titulo": "Nahomi Martínez Matchday's", "corto": "Nahomi Martínez",
-        "cat": "deporte", "ano": "2023", "cifra": "16", "cifra_t": "afiches",
+        "slug": "nahomi-martinez", "cliente": "Nahomi Martínez · footballer", "titulo": "Nahomi Martínez Matchday's", "corto": "Nahomi Martínez",
+        "cat": "deporte", "ano": "2023", "cifra": "16", "cifra_t": "posters",
         "herr": ["Photoshop", "Illustrator"], "portada": "03.jpg",
-        "resumen": "Serie de matchdays para Nahomi Martínez, jugadora de Universitario y de la selección peruana.",
+        "resumen": "A matchday series for Nahomi Martínez, who plays for Universitario and the Peru national team.",
         "texto": [
-            "Una temporada completa contada en afiches verticales: crema y granate de Universitario, rojo de la selección.",
-            "Texturas de mármol líquido, collage de recortes y tipografía que envuelve a la jugadora.",
+            "A full season told in vertical posters: Universitario's cream and maroon, the national team's red.",
+            "Liquid marble textures, cutout collage and type that wraps around the player.",
         ],
-        "datos": [("16", "afiches"), ("2", "camisetas: club y selección"), ("2022–23", "temporada")],
+        "datos": [("16", "posters"), ("2", "kits: club and country"), ("2022–23", "season")],
     },
     {
         "slug": "luis-benites", "cliente": "Luis Benites · Sport Huancayo", "titulo": "Luis Benites Matchday's", "corto": "Luis Benites",
-        "cat": "deporte", "ano": "2023", "cifra": "15", "cifra_t": "afiches",
+        "cat": "deporte", "ano": "2023", "cifra": "15", "cifra_t": "posters",
         "herr": ["Photoshop", "Illustrator"], "portada": "05.jpg",
-        "resumen": "Matchdays para Luis Benites, el número 21 de Sport Huancayo.",
+        "resumen": "Matchday posters for Luis Benites, Sport Huancayo's number 21.",
         "texto": [
-            "Rojo total: el nombre del jugador repetido como textura, diagonales y montajes con la Copa Libertadores.",
-            "Piezas para cada partido de la temporada 2022–23, desde el Estadio Huancayo hasta Libertadores.",
+            "All red: the player's name repeated as a texture, diagonals and composites with the Copa Libertadores.",
+            "A piece for every match of the 2022–23 season, from Estadio Huancayo to the Libertadores.",
         ],
-        "datos": [("15", "afiches"), ("21", "dorsal"), ("2022–23", "temporada")],
+        "datos": [("15", "posters"), ("21", "shirt number"), ("2022–23", "season")],
     },
     {
-        "slug": "qatar-2022", "cliente": "Cobertura del Mundial para redes", "titulo": "Qatar 2022", "corto": "Qatar 2022",
-        "cat": "marca", "ano": "2022", "cifra": "37", "cifra_t": "piezas",
+        "slug": "qatar-2022", "cliente": "World Cup social media coverage", "titulo": "Qatar 2022", "corto": "Qatar 2022",
+        "cat": "marca", "ano": "2022", "cifra": "37", "cifra_t": "pieces",
         "herr": ["Photoshop", "Illustrator"], "portada": "04.jpg",
-        "resumen": "Sistema de piezas para redes durante la Copa Mundial de la FIFA Qatar 2022.",
+        "resumen": "A social media content system for the FIFA World Cup Qatar 2022.",
         "texto": [
-            "Grupos, sedes, alineaciones, resultados y cuadro final con un mismo sistema en granate.",
-            "Banderas en rombo, marcadores grandes y fotografía de partido para publicar el mismo día de cada juego.",
+            "Groups, venues, line-ups, results and the final bracket, all in one maroon system.",
+            "Diamond-shaped flags, big scores and match photography, ready to publish on the day of each game.",
         ],
-        "datos": [("37", "piezas"), ("8", "sedes"), ("32", "selecciones")],
+        "datos": [("37", "pieces"), ("8", "venues"), ("32", "national teams")],
     },
     {
-        "slug": "physo", "cliente": "Physo · Santiago de Surco, Lima", "titulo": "Physo · Centro de fisioterapia", "corto": "Physo",
-        "cat": "marca", "ano": "2024", "cifra": "30", "cifra_t": "publicaciones",
+        "slug": "physo", "cliente": "Physo · Santiago de Surco, Lima", "titulo": "Physo · Physical therapy center", "corto": "Physo",
+        "cat": "marca", "ano": "2024", "cifra": "30", "cifra_t": "posts",
         "herr": ["Photoshop", "Figma"], "portada": "02.jpg",
-        "resumen": "Contenido para redes de Physo, un centro de fisioterapia en Santiago de Surco, Lima.",
+        "resumen": "Social media content for Physo, a physical therapy center in Santiago de Surco, Lima.",
         "texto": [
-            "Naranja, azul noche y crema: un sistema que explica métodos, pasos de evaluación y ejercicios.",
-            "Fotografía propia del centro con etiquetas claras: estiramiento, flexibilidad, fuerza y realidad virtual.",
+            "Orange, midnight blue and cream: a system that explains methods, assessment steps and exercises.",
+            "The center's own photography with clear labels: stretching, flexibility, strength and virtual reality.",
         ],
-        "datos": [("30", "publicaciones"), ("5", "pasos de evaluación"), ("3", "colores de marca")],
+        "datos": [("30", "posts"), ("5", "assessment steps"), ("3", "brand colors")],
     },
     {
         "slug": "zena-coffee", "cliente": "Café Zena", "titulo": "Zena Coffee Store", "corto": "Zena Coffee",
-        "cat": "web", "ano": "2024", "cifra": "2", "cifra_t": "pantallas",
+        "cat": "web", "ano": "2024", "cifra": "2", "cifra_t": "screens",
         "herr": ["Photoshop", "Figma"], "portada": "01.jpg",
-        "resumen": "Landing page y tienda para Café Zena.",
+        "resumen": "Landing page and online store for Café Zena.",
         "texto": [
-            "Guía de estilo con colores tomados de cuatro tonos de café y una tipografía serif clásica.",
-            "Landing con la historia de la marca y una tienda con filtros por tipo de café.",
+            "A style guide with colors taken from four coffee roasts and a classic serif typeface.",
+            "A landing page with the brand's story and a store with filters by type of coffee.",
         ],
-        "datos": [("2", "pantallas"), ("4", "tonos de café"), ("Figma", "diseño")],
+        "datos": [("2", "screens"), ("4", "coffee tones"), ("Figma", "design")],
     },
     {
-        "slug": "valorant", "cliente": "Transmisiones en Twitch", "titulo": "Overlays Valorant Multicolor", "corto": "Valorant",
-        "cat": "gaming", "ano": "2022", "cifra": "3", "cifra_t": "pantallas",
+        "slug": "valorant", "cliente": "Twitch streams", "titulo": "Valorant Multicolor Overlays", "corto": "Valorant",
+        "cat": "gaming", "ano": "2022", "cifra": "3", "cifra_t": "screens",
         "herr": ["Photoshop"], "portada": "02.jpg",
-        "resumen": "Paquete de overlays para transmisiones de Valorant.",
+        "resumen": "An overlay pack for Valorant streams.",
         "texto": [
-            "Pantalla de inicio, escena de juego con cámara y chat, y pantalla de espera.",
-            "Fondo negro con trazos de pincel y acentos de color en los bordes.",
+            "Starting screen, in-game scene with camera and chat, and a waiting screen.",
+            "Black background with brush strokes and color accents on the edges.",
         ],
-        "datos": [("3", "escenas"), ("16:9", "formato"), ("Twitch", "uso")],
+        "datos": [("3", "scenes"), ("16:9", "format"), ("Twitch", "use")],
     },
 ]
 

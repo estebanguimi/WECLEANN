@@ -94,7 +94,7 @@
 
   /* ---------- Reloj ---------- */
   var reloj = document.querySelector("[data-reloj]");
-  var hora = function () { try { reloj.textContent = new Intl.DateTimeFormat("es", { hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "America/New_York" }).format(new Date()) + " EST"; } catch (e) {} };
+  var hora = function () { try { reloj.textContent = new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "America/New_York" }).format(new Date()) + " EST"; } catch (e) {} };
   if (reloj) { hora(); setInterval(hora, 1000); }
 
   /* ---------- Visor WebGL ---------- */
@@ -260,7 +260,7 @@
       var txt = b.getAttribute("data-copiar");
       var et = b.querySelector(".mono") || b;
       var orig = et.textContent;
-      var ok = function () { et.textContent = "Copiado"; setTimeout(function () { et.textContent = orig; }, 1400); };
+      var ok = function () { et.textContent = "Copied"; setTimeout(function () { et.textContent = orig; }, 1400); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, function () {}); else ok();
     });
   });
@@ -271,5 +271,5 @@
 
 /* Aviso al copiar el correo desde el currículum */
 document.querySelectorAll(".cv-correo").forEach(function (b) {
-  b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Correo copiado"; setTimeout(function () { b.textContent = t; }, 1600); });
+  b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Email copied"; setTimeout(function () { b.textContent = t; }, 1600); });
 });

@@ -24,12 +24,12 @@
   document.querySelectorAll("[data-copiar]").forEach(function (b) {
     b.addEventListener("click", function () {
       var av = b.querySelector("[data-copiado]"), t = b.getAttribute("data-copiar");
-      var ok = function () { if (av) { var o = av.textContent; av.textContent = "¡copiado!"; setTimeout(function () { av.textContent = o; }, 1500); } };
+      var ok = function () { if (av) { var o = av.textContent; av.textContent = "copied!"; setTimeout(function () { av.textContent = o; }, 1500); } };
       if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, ok); else ok();
     });
   });
   document.querySelectorAll(".cv-correo").forEach(function (b) {
-    b.addEventListener("click", function () { var t = b.textContent; b.textContent = "¡Correo copiado!"; setTimeout(function () { b.textContent = t; }, 1600); });
+    b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Email copied!"; setTimeout(function () { b.textContent = t; }, 1600); });
   });
 
   /* ---------------- hoja rasgada entre páginas ---------------- */

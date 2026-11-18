@@ -124,7 +124,7 @@
   var cur = document.querySelector("[data-cursor-el]");
   if (cur && fino && G) {
     var cx = G.quickTo(cur, "x", { duration: .45, ease: "power3" }), cy = G.quickTo(cur, "y", { duration: .45, ease: "power3" });
-    var etiquetas = { ver: "Ver", ir: "Ir", siguiente: "Siguiente", escribir: "Escribir", copiar: "Copiar" };
+    var etiquetas = { ver: "View", ir: "Go", siguiente: "Next", escribir: "Write", copiar: "Copy" };
     window.addEventListener("pointermove", function (ev) { cur.style.opacity = 1; cx(ev.clientX); cy(ev.clientY); });
     document.addEventListener("pointerover", function (ev) {
       var t = ev.target.closest("[data-cursor]");
@@ -149,7 +149,7 @@
   else window.addEventListener("scroll", function () { alScroll(scrollY); }, { passive: true });
   var reloj = document.querySelector("[data-reloj]");
   function hora() {
-    try { reloj.textContent = "Miami " + new Intl.DateTimeFormat("es", { hour: "2-digit", minute: "2-digit", timeZone: "America/New_York" }).format(new Date()); } catch (e) {}
+    try { reloj.textContent = "Miami " + new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit", timeZone: "America/New_York" }).format(new Date()); } catch (e) {}
   }
   if (reloj) { hora(); setInterval(hora, 20000); }
 
@@ -271,7 +271,7 @@
     var o = { v: 0 };
     el.textContent = "0";
     ST.create({ trigger: el, start: "top 88%", once: true, onEnter: function () {
-      G.to(o, { v: fin, duration: 2.2, ease: "power3.out", onUpdate: function () { el.textContent = Math.round(o.v).toLocaleString("es"); } });
+      G.to(o, { v: fin, duration: 2.2, ease: "power3.out", onUpdate: function () { el.textContent = Math.round(o.v).toLocaleString("en-US"); } });
     } });
   });
 
@@ -354,7 +354,7 @@
     b.addEventListener("click", function () {
       var txt = b.getAttribute("data-copiar");
       var aviso = b.querySelector("[data-copiado]") || document.querySelector("[data-copiado-g]");
-      var ok = function () { if (aviso) aviso.textContent = "Copiado"; setTimeout(function () { if (aviso) aviso.textContent = aviso.hasAttribute("data-copiado-g") ? "Haz clic para copiar el correo" : "Copiar"; }, 1800); };
+      var ok = function () { if (aviso) aviso.textContent = "Copied"; setTimeout(function () { if (aviso) aviso.textContent = aviso.hasAttribute("data-copiado-g") ? "Click to copy the email" : "Copy"; }, 1800); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, function () { if (aviso) aviso.textContent = txt; });
       else if (aviso) aviso.textContent = txt;
     });
@@ -369,5 +369,5 @@
 
 /* Aviso al copiar el correo desde el currículum */
 document.querySelectorAll(".cv-correo").forEach(function (b) {
-  b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Correo copiado"; setTimeout(function () { b.textContent = t; }, 1600); });
+  b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Email copied"; setTimeout(function () { b.textContent = t; }, 1600); });
 });

@@ -34,7 +34,7 @@ def medida(slug, nombre):
 
 def documento(titulo, descripcion, fuentes, cuerpo, clase="", extra_head=""):
     return f"""<!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -169,23 +169,23 @@ def cv_secciones(eti_h2="cv-h"):
     cif = "".join(f'<div class="cv-cifra"><b>{e(a)}</b><span>{e(b)}</span></div>' for a, b in D.CIFRAS)
     return f"""<div class="cv">
   <div class="cv-cab">
-    <img class="cv-foto" src="{retrato()}" alt="Retrato de {e(D.NOMBRE)}">
+    <img class="cv-foto" src="{retrato()}" alt="Portrait of {e(D.NOMBRE)}">
     <div class="cv-id">
       <p class="cv-puesto">{e(D.PUESTO)}</p>
       <p class="cv-resumen">{e(D.CV_RESUMEN)}</p>
       <div class="cv-acciones">
-        <a class="cv-pdf" href="{D.CV_PDF}" download>Descargar CV en PDF</a>
+        <a class="cv-pdf" href="{D.CV_PDF}" download>Download CV (PDF)</a>
         <button type="button" class="cv-correo" data-copiar="{e(D.CORREO)}">{e(D.CORREO)}</button>
       </div>
     </div>
   </div>
   <div class="cv-cifras">{cif}</div>
-  <section class="cv-bloque"><h2 class="{eti_h2}">Experiencia</h2><ol class="cv-exp">{''.join(exp)}</ol></section>
+  <section class="cv-bloque"><h2 class="{eti_h2}">Experience</h2><ol class="cv-exp">{''.join(exp)}</ol></section>
   <section class="cv-bloque cv-dos">
-    <div><h2 class="{eti_h2}">Habilidades</h2><dl class="cv-hab">{hab}</dl></div>
-    <div><h2 class="{eti_h2}">Herramientas</h2><ul class="cv-chips">{her}</ul>
-      <h2 class="{eti_h2}">Idiomas</h2><ul class="cv-idiomas">{idi}</ul>
-      <h2 class="{eti_h2}">Base</h2><p class="cv-base">{e(D.CIUDAD)} · Origen {e(D.ORIGEN)}<br>{e(D.DISPONIBLE)}</p></div>
+    <div><h2 class="{eti_h2}">Skills</h2><dl class="cv-hab">{hab}</dl></div>
+    <div><h2 class="{eti_h2}">Tools</h2><ul class="cv-chips">{her}</ul>
+      <h2 class="{eti_h2}">Languages</h2><ul class="cv-idiomas">{idi}</ul>
+      <h2 class="{eti_h2}">Location</h2><p class="cv-base">{e(D.CIUDAD)} · From {e(D.ORIGEN)}<br>{e(D.DISPONIBLE)}</p></div>
   </section>
 </div>"""
 

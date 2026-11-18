@@ -273,7 +273,7 @@
   document.querySelectorAll("[data-copiar]").forEach(function (b) {
     b.addEventListener("click", function () {
       var av = b.querySelector("[data-copiado]"), txt = b.getAttribute("data-copiar"), orig = av ? av.textContent : "";
-      var ok = function () { if (av) { av.textContent = "¡Copiado!"; setTimeout(function () { av.textContent = orig; }, 1800); } G.fromTo(b, { rotation: -3 }, { rotation: 0, duration: .6, ease: "elastic.out(1.2, .3)" }); };
+      var ok = function () { if (av) { av.textContent = "Copied!"; setTimeout(function () { av.textContent = orig; }, 1800); } G.fromTo(b, { rotation: -3 }, { rotation: 0, duration: .6, ease: "elastic.out(1.2, .3)" }); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, function () { if (av) av.textContent = txt; }); else if (av) av.textContent = txt;
     });
   });
@@ -285,5 +285,5 @@
 
 /* Aviso al copiar el correo desde el currículum */
 document.querySelectorAll(".cv-correo").forEach(function (b) {
-  b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Correo copiado"; setTimeout(function () { b.textContent = t; }, 1600); });
+  b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Email copied"; setTimeout(function () { b.textContent = t; }, 1600); });
 });

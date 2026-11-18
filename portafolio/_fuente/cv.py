@@ -64,7 +64,7 @@ def html_cv(linea):
 <span>{e(D.CATEGORIAS[D.por_slug(s)['cat']])} · {e(D.por_slug(s)['cifra'])} {e(D.por_slug(s)['cifra_t'])}</span></figcaption></figure>""" for s in DESTACADOS)
     idi = "".join(f"<li><b>{e(a)}</b> — {e(b)}</li>" for a, b in D.IDIOMAS)
     her = "".join(f"<li>{e(h)}</li>" for h in D.HERRAMIENTAS)
-    return f"""<!doctype html><html lang="es"><head><meta charset="utf-8">
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{T['fuentes']}&display=swap">
 <style>
 @page{{size:A4;margin:0}}
@@ -99,11 +99,11 @@ h2{{font-family:{T['fm']};font-size:7.4pt;letter-spacing:.12em;text-transform:up
 </style></head><body><div class="hoja">
 <header class="cab"><img class="r" src="{IMG}/retrato.jpg"><div><h1>{e(D.NOMBRE)}</h1><p class="pu">{e(D.PUESTO)} <i>·</i> {e(D.CIUDAD)}</p></div>
 <div class="ct">{e(D.CORREO)}<br>{e(D.INSTAGRAM_T)}<br>{e(D.DISPONIBLE)}</div><div class="lg">{T['logo']}</div></header>
-<div class="cuerpo"><main><h2>Perfil</h2><p class="res">{e(D.CV_RESUMEN)}</p><h2>Experiencia</h2>{exp}</main>
-<aside class="lat"><section><h2>En cifras</h2><div class="cif">{cif}</div></section><section><h2>Habilidades</h2>{hab}</section>
-<section><h2>Herramientas</h2><ul class="her">{her}</ul></section><section><h2>Idiomas</h2><ul>{idi}</ul></section></aside></div>
-<section class="dest"><h2>Proyectos destacados</h2><div class="fi">{dest}</div></section>
-<div class="pie"><span>{e(D.NOMBRE)} · Currículum 2026</span><span>Portafolio completo en la web</span></div>
+<div class="cuerpo"><main><h2>Profile</h2><p class="res">{e(D.CV_RESUMEN)}</p><h2>Experience</h2>{exp}</main>
+<aside class="lat"><section><h2>By the numbers</h2><div class="cif">{cif}</div></section><section><h2>Skills</h2>{hab}</section>
+<section><h2>Tools</h2><ul class="her">{her}</ul></section><section><h2>Languages</h2><ul>{idi}</ul></section></aside></div>
+<section class="dest"><h2>Featured projects</h2><div class="fi">{dest}</div></section>
+<div class="pie"><span>{e(D.NOMBRE)} · Résumé 2026</span><span>Full portfolio online</span></div>
 </div></body></html>"""
 
 

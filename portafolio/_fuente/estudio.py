@@ -20,32 +20,32 @@ LOGO = """<svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
 
 
 def nav(activa=""):
-    items = [("index.html", "Inicio", "01"), ("trabajo.html", "Índice", "02"), ("sobre.html", "Perfil", "03"), ("cv.html", "CV", "04"), ("contacto.html", "Contacto", "05")]
+    items = [("index.html", "Home", "01"), ("work.html", "Index", "02"), ("about.html", "About", "03"), ("cv.html", "CV", "04"), ("contact.html", "Contact", "05")]
     links = "".join(
         f'<a href="{h}"{" aria-current=\"page\"" if h == activa else ""} data-n="{n}"><sup>{n}</sup>{t}</a>' for h, t, n in items)
     return f"""<header class="cab" data-cab>
-  <a href="index.html" class="cab-marca" aria-label="{e(D.NOMBRE)}, inicio">{LOGO}<span>Esteban Guillen<br><em>Diseño, video y foto</em></span></a>
+  <a href="index.html" class="cab-marca" aria-label="{e(D.NOMBRE)}, home">{LOGO}<span>Esteban Guillen<br><em>Design, video and photo</em></span></a>
   <span class="cab-dato mono">{e(D.CIUDAD)}<br><span data-reloj>—</span></span>
-  <span class="cab-dato mono">Disponible<br>Autónomo · Tiempo completo</span>
-  <nav class="cab-nav" aria-label="Principal">{links}</nav>
+  <span class="cab-dato mono">Available<br>Full-time · Freelance</span>
+  <nav class="cab-nav" aria-label="Main">{links}</nav>
 </header>"""
 
 
 def pie():
     return f"""<footer class="pie">
-  <div class="pie-cab"><p class="mono">06 — Contacto</p><button type="button" class="mono reticula-btn" data-reticula>Mostrar retícula (G)</button></div>
-  <a class="pie-correo" href="contacto.html" data-roll><span>Escríbeme</span></a>
+  <div class="pie-cab"><p class="mono">06 — Contact</p><button type="button" class="mono reticula-btn" data-reticula>Show grid (G)</button></div>
+  <a class="pie-correo" href="contact.html" data-roll><span>Get in touch</span></a>
   <div class="pie-cols">
-    <div><p class="mono">Correo</p><button type="button" class="copiar" data-copiar="{e(D.CORREO)}">{e(D.CORREO)}</button></div>
-    <div><p class="mono">Perfil</p><a href="cv.html">Currículum</a><a href="{e(D.CV_PDF)}" download>CV en PDF ↓</a><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram ↗</a></div>
-    <div><p class="mono">Base</p><p>{e(D.CIUDAD)}<br>Origen {e(D.ORIGEN)}</p></div>
-    <div><p class="mono">Estado</p><p><span class="punto"></span> {e(D.DISPONIBLE)}</p></div>
+    <div><p class="mono">Email</p><button type="button" class="copiar" data-copiar="{e(D.CORREO)}">{e(D.CORREO)}</button></div>
+    <div><p class="mono">Profile</p><a href="cv.html">Résumé</a><a href="{e(D.CV_PDF)}" download>CV (PDF) ↓</a><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram ↗</a></div>
+    <div><p class="mono">Location</p><p>{e(D.CIUDAD)}<br>From {e(D.ORIGEN)}</p></div>
+    <div><p class="mono">Status</p><p><span class="punto"></span> {e(D.DISPONIBLE)}</p></div>
   </div>
-  <div class="pie-legal mono"><span>© 2026 Esteban Guillen</span><span>Retícula de 12 columnas · Geist</span><span>{e(D.PUESTO)}</span></div>
+  <div class="pie-legal mono"><span>© 2026 Esteban Guillen</span><span>12-column grid · Geist</span><span>{e(D.PUESTO)}</span></div>
 </footer>"""
 
 
-def envoltura(cuerpo, activa="", numero="01", titulo="Inicio"):
+def envoltura(cuerpo, activa="", numero="01", titulo="Home"):
     cols = "".join("<i></i>" for _ in range(12))
     return f"""<div class="reticula" data-reticula-el aria-hidden="true">{cols}</div>
 <div class="panel" data-panel aria-hidden="true"><span class="panel-n" data-panel-n>{numero}</span><span class="panel-t" data-panel-t>{e(titulo)}</span></div>
@@ -75,7 +75,7 @@ def inicio():
 </div>""")
     paletas = []
     for p in D.PROYECTOS[:8] + D.PROYECTOS[8:]:
-        sw = "".join(f'<button type="button" class="sw" style="--c:{c}" data-copiar="{c}" title="Copiar {c}"><span class="mono">{c}</span></button>' for c in C.paleta(p["slug"]))
+        sw = "".join(f'<button type="button" class="sw" style="--c:{c}" data-copiar="{c}" title="Copy {c}"><span class="mono">{c}</span></button>' for c in C.paleta(p["slug"]))
         paletas.append(f'<a class="pal-f" href="{p["slug"]}.html"><span class="pal-t">{e(p["corto"])}</span></a><div class="pal-sw">{sw}</div>')
     servicios = "".join(f'<li><span class="mono">0{i + 1}</span><h3>{e(t)}</h3><p>{e(d)}</p></li>' for i, (t, d) in enumerate(D.SERVICIOS))
     cuerpo = f"""<main>
@@ -84,16 +84,16 @@ def inicio():
     <div class="hero-meta">
       <p class="hero-bio">{e(D.BIO)}</p>
       <dl class="hero-cifras">
-        <div><dt class="mono">Vistas en campañas</dt><dd>1,3M</dd></div>
-        <div><dt class="mono">Años de experiencia</dt><dd data-contar="8">8</dd></div>
-        <div><dt class="mono">Piezas publicadas</dt><dd data-contar="{sum(len(D.imagenes(p['slug'])) for p in D.PROYECTOS)}">{sum(len(D.imagenes(p['slug'])) for p in D.PROYECTOS)}</dd></div>
+        <div><dt class="mono">Campaign views</dt><dd>1.3M</dd></div>
+        <div><dt class="mono">Years of experience</dt><dd data-contar="8">8</dd></div>
+        <div><dt class="mono">Published pieces</dt><dd data-contar="{sum(len(D.imagenes(p['slug'])) for p in D.PROYECTOS)}">{sum(len(D.imagenes(p['slug'])) for p in D.PROYECTOS)}</dd></div>
       </dl>
     </div>
     <div class="visor-wrap">
       <ol class="visor-lista" data-visor-lista>{lista}</ol>
       <figure class="visor" data-visor>
         <canvas data-gl aria-hidden="true"></canvas>
-        <img class="visor-respaldo" src="{C.img(D.PROYECTOS[0]['slug'], D.PROYECTOS[0]['portada'])}" alt="Portada de {e(D.PROYECTOS[0]['titulo'])}" data-respaldo>
+        <img class="visor-respaldo" src="{C.img(D.PROYECTOS[0]['slug'], D.PROYECTOS[0]['portada'])}" alt="Cover of {e(D.PROYECTOS[0]['titulo'])}" data-respaldo>
         <figcaption class="visor-pie"><span class="mono" data-v-n>01 / 12</span><span data-v-t>{e(D.PROYECTOS[0]['corto'])}</span><span class="mono" data-v-c>{e(D.CATEGORIAS[D.PROYECTOS[0]['cat']])}</span></figcaption>
         <span class="visor-barra" aria-hidden="true"><i data-v-barra></i></span>
       </figure>
@@ -102,30 +102,30 @@ def inicio():
   </section>
 
   <section class="sec rj" id="indice">
-    <header class="sec-cab"><p class="mono">02 — Índice</p><h2 data-lineas>Doce proyectos,<br>seis disciplinas.</h2></header>
+    <header class="sec-cab"><p class="mono">02 — Index</p><h2 data-lineas>Twelve projects,<br>six disciplines.</h2></header>
     <div class="ix">{"".join(indice)}</div>
   </section>
 
   <section class="sec rj sec-negra">
-    <header class="sec-cab"><p class="mono">03 — Color</p><h2 data-lineas>La paleta real<br>de cada proyecto.</h2><p class="sec-nota">Colores medidos en las piezas publicadas. Toca uno para copiar su código.</p></header>
+    <header class="sec-cab"><p class="mono">03 — Color</p><h2 data-lineas>The real palette<br>of every project.</h2><p class="sec-nota">Colors sampled from the published pieces. Tap one to copy its code.</p></header>
     <div class="paletas">{"".join(paletas)}</div>
   </section>
 
   <section class="sec rj">
-    <header class="sec-cab"><p class="mono">04 — Recorrido</p><h2 data-lineas>Ocho años,<br>de Lima a Miami.</h2><p class="sec-nota"><a class="subraya" href="cv.html">Currículum completo →</a></p></header>
+    <header class="sec-cab"><p class="mono">04 — Experience</p><h2 data-lineas>Eight years,<br>from Lima to Miami.</h2><p class="sec-nota"><a class="subraya" href="cv.html">Full résumé →</a></p></header>
     {C.recorrido()}
   </section>
 
   <section class="sec rj">
-    <header class="sec-cab"><p class="mono">05 — Disciplinas</p><h2 data-lineas>Lo que hago.</h2></header>
+    <header class="sec-cab"><p class="mono">05 — Disciplines</p><h2 data-lineas>What I do.</h2></header>
     <ol class="servicios">{servicios}</ol>
   </section>
 </main>"""
-    return C.documento(f"{D.NOMBRE} · Estudio", D.BIO, FUENTES, envoltura(cuerpo, "index.html", "01", "Inicio"), clase="pg-inicio")
+    return C.documento(f"{D.NOMBRE} · Studio", D.BIO, FUENTES, envoltura(cuerpo, "index.html", "01", "Home"), clase="pg-inicio")
 
 
 def trabajo():
-    filtros = [("todo", "Todo", len(D.PROYECTOS))] + [(k, v, sum(1 for p in D.PROYECTOS if p["cat"] == k)) for k, v in D.CATEGORIAS.items()]
+    filtros = [("todo", "All", len(D.PROYECTOS))] + [(k, v, sum(1 for p in D.PROYECTOS if p["cat"] == k)) for k, v in D.CATEGORIAS.items()]
     botones = "".join(f'<button type="button" data-filtro="{k}" class="{"activo" if k == "todo" else ""}" aria-pressed="{"true" if k == "todo" else "false"}">{e(t)} <sup>{n}</sup></button>' for k, t, n in filtros)
     items = []
     for i, p in enumerate(D.PROYECTOS):
@@ -135,17 +135,17 @@ def trabajo():
 </a>""")
     cuerpo = f"""<main>
   <section class="pag-cab rj">
-    <p class="mono">02 — Índice</p>
-    <h1 data-lineas>Índice</h1>
-    <p class="pag-intro">Doce proyectos entre 2022 y 2026: video, fotografía, deporte, marca, web y gaming. Cambia entre lista y cuadrícula.</p>
+    <p class="mono">02 — Index</p>
+    <h1 data-lineas>Index</h1>
+    <p class="pag-intro">Twelve projects from 2022 to 2026: video, photography, sports, brand, web and gaming. Switch between list and grid.</p>
   </section>
   <div class="herr-barra rj">
-    <div class="filtros" role="group" aria-label="Filtrar">{botones}</div>
-    <div class="vistas" role="group" aria-label="Vista"><button type="button" data-vista="lista" class="activo" aria-pressed="true">Lista</button><button type="button" data-vista="cuadricula" aria-pressed="false">Cuadrícula</button></div>
+    <div class="filtros" role="group" aria-label="Filter">{botones}</div>
+    <div class="vistas" role="group" aria-label="View"><button type="button" data-vista="lista" class="activo" aria-pressed="true">List</button><button type="button" data-vista="cuadricula" aria-pressed="false">Grid</button></div>
   </div>
   <section class="items rj vista-lista" data-items>{"".join(items)}</section>
 </main>"""
-    return C.documento(f"Índice · {D.NOMBRE}", "Índice de proyectos.", FUENTES, envoltura(cuerpo, "trabajo.html", "02", "Índice"), clase="pg-trabajo")
+    return C.documento(f"Work · {D.NOMBRE}", "Project index.", FUENTES, envoltura(cuerpo, "work.html", "02", "Index"), clase="pg-trabajo")
 
 
 def proyecto(p):
@@ -153,7 +153,7 @@ def proyecto(p):
     sig = D.siguiente(p["slug"])
     textos = "".join(f"<p>{e(t)}</p>" for t in p["texto"])
     datos = "".join(f'<div><dd>{e(v)}</dd><dt class="mono">{e(t)}</dt></div>' for v, t in p["datos"])
-    sw = "".join(f'<button type="button" class="sw" style="--c:{c}" data-copiar="{c}" title="Copiar {c}"><span class="mono">{c}</span></button>' for c in C.paleta(p["slug"]))
+    sw = "".join(f'<button type="button" class="sw" style="--c:{c}" data-copiar="{c}" title="Copy {c}"><span class="mono">{c}</span></button>' for c in C.paleta(p["slug"]))
     # cuadrícula modular: cada imagen ocupa columnas según su proporción
     modulos = []
     for k, (n, w, h) in enumerate(D.imagenes(p["slug"])):
@@ -171,21 +171,21 @@ def proyecto(p):
     video = C.bloque_video(p)
     cuerpo = f"""<main>
   <section class="p-cab rj">
-    <p class="mono p-miga"><a href="trabajo.html">Índice</a> / {i + 1:02d} / {e(D.CATEGORIAS[p['cat']])}</p>
+    <p class="mono p-miga"><a href="work.html">Index</a> / {i + 1:02d} / {e(D.CATEGORIAS[p['cat']])}</p>
     <h1 data-lineas>{e(p['titulo'])}</h1>
   </section>
   <figure class="p-portada rj" data-portada><span><img src="{C.img(p['slug'], p['portada'])}" alt="{e(p['titulo'])}"></span></figure>
   <section class="p-cuerpo rj">
     <aside class="p-meta">
       <dl>
-        <div><dt class="mono">Número</dt><dd>{i + 1:02d} de {len(D.PROYECTOS)}</dd></div>
-        <div><dt class="mono">Cliente</dt><dd>{e(p['cliente'])}</dd></div>
-        <div><dt class="mono">Mi rol</dt><dd>{e(D.ROLES[p['cat']])}</dd></div>
-        <div><dt class="mono">Disciplina</dt><dd>{e(D.CATEGORIAS[p['cat']])}</dd></div>
-        <div><dt class="mono">Año</dt><dd>{e(p['ano'])}</dd></div>
-        <div><dt class="mono">Herramientas</dt><dd>{e(', '.join(p['herr']))}</dd></div>
+        <div><dt class="mono">Number</dt><dd>{i + 1:02d} of {len(D.PROYECTOS)}</dd></div>
+        <div><dt class="mono">Client</dt><dd>{e(p['cliente'])}</dd></div>
+        <div><dt class="mono">My role</dt><dd>{e(D.ROLES[p['cat']])}</dd></div>
+        <div><dt class="mono">Discipline</dt><dd>{e(D.CATEGORIAS[p['cat']])}</dd></div>
+        <div><dt class="mono">Year</dt><dd>{e(p['ano'])}</dd></div>
+        <div><dt class="mono">Tools</dt><dd>{e(', '.join(p['herr']))}</dd></div>
       </dl>
-      <p class="mono p-pal-t">Paleta medida</p>
+      <p class="mono p-pal-t">Sampled palette</p>
       <div class="p-pal">{sw}</div>
     </aside>
     <div class="p-txt">
@@ -197,12 +197,12 @@ def proyecto(p):
   {f'<section class="rj">{video}</section>' if video else ''}
   <section class="mods rj" data-galeria>{"".join(modulos)}</section>
   <a class="sig rj" href="{sig['slug']}.html" data-roll>
-    <span class="mono">Siguiente — {D.PROYECTOS.index(sig) + 1:02d}</span>
+    <span class="mono">Next — {D.PROYECTOS.index(sig) + 1:02d}</span>
     <span class="sig-t"><span>{e(sig['titulo'])}</span></span>
     <span class="sig-img"><img src="{C.img(sig['slug'], sig['portada'])}" alt="" loading="lazy"></span>
   </a>
 </main>
-<div class="lb" data-lb hidden><button type="button" class="mono lb-x" data-lb-x>Cerrar [Esc]</button><img alt="" data-lb-img><span class="mono lb-n" data-lb-n></span><button type="button" class="lb-a" data-lb-a aria-label="Anterior">←</button><button type="button" class="lb-s" data-lb-s aria-label="Siguiente">→</button></div>"""
+<div class="lb" data-lb hidden><button type="button" class="mono lb-x" data-lb-x>Close [Esc]</button><img alt="" data-lb-img><span class="mono lb-n" data-lb-n></span><button type="button" class="lb-a" data-lb-a aria-label="Previous">←</button><button type="button" class="lb-s" data-lb-s aria-label="Next">→</button></div>"""
     return C.documento(f"{p['corto']} · {D.NOMBRE}", p["resumen"], FUENTES, envoltura(cuerpo, "", f"{i + 1:02d}", p["corto"]), clase="pg-proyecto")
 
 
@@ -210,48 +210,48 @@ def sobre():
     bio = "".join(f"<p>{e(x)}</p>" for x in D.BIO_LARGA)
     herr = "".join(f"<li>{e(h)}</li>" for h in D.HERRAMIENTAS)
     cuerpo = f"""<main>
-  <section class="pag-cab rj"><p class="mono">03 — Perfil</p><h1 data-lineas>Perfil</h1></section>
+  <section class="pag-cab rj"><p class="mono">03 — About</p><h1 data-lineas>About</h1></section>
   <section class="perfil rj">
-    <figure class="perfil-foto" data-portada><span><img src="{C.retrato()}" alt="Retrato de {e(D.NOMBRE)}"></span><figcaption class="mono">Esteban Guillen · {e(D.CIUDAD)}</figcaption></figure>
+    <figure class="perfil-foto" data-portada><span><img src="{C.retrato()}" alt="Portrait of {e(D.NOMBRE)}"></span><figcaption class="mono">Esteban Guillen · {e(D.CIUDAD)}</figcaption></figure>
     <div class="perfil-txt"><p class="p-res" data-lineas>{e(D.BIO)}</p><div class="perfil-cols">{bio}</div></div>
   </section>
   <section class="sec rj">
-    <header class="sec-cab"><p class="mono">Recorrido</p><p class="sec-nota"><a class="subraya" href="cv.html">Currículum completo →</a> · <a class="subraya" href="{e(D.CV_PDF)}" download>PDF ↓</a></p></header>
+    <header class="sec-cab"><p class="mono">Experience</p><p class="sec-nota"><a class="subraya" href="cv.html">Full résumé →</a> · <a class="subraya" href="{e(D.CV_PDF)}" download>PDF ↓</a></p></header>
     {C.recorrido()}
-    <header class="sec-cab" style="margin-top:72px"><p class="mono">Herramientas</p></header>
+    <header class="sec-cab" style="margin-top:72px"><p class="mono">Tools</p></header>
     <ul class="herrs">{herr}</ul>
   </section>
 </main>"""
-    return C.documento(f"Perfil · {D.NOMBRE}", D.BIO, FUENTES, envoltura(cuerpo, "sobre.html", "03", "Perfil"), clase="pg-sobre")
+    return C.documento(f"About · {D.NOMBRE}", D.BIO, FUENTES, envoltura(cuerpo, "about.html", "03", "About"), clase="pg-sobre")
 
 
 def contacto():
     cuerpo = f"""<main>
-  <section class="pag-cab rj"><p class="mono">05 — Contacto</p><h1 data-lineas>Hablemos<br>de tu proyecto.</h1></section>
+  <section class="pag-cab rj"><p class="mono">05 — Contact</p><h1 data-lineas>Let's talk<br>about your team.</h1></section>
   <section class="ct rj">
-    <button type="button" class="ct-correo" data-copiar="{e(D.CORREO)}"><span class="mono" data-copiado>Correo — clic para copiar</span><b>{e(D.CORREO)}</b></button>
+    <button type="button" class="ct-correo" data-copiar="{e(D.CORREO)}"><span class="mono" data-copiado>Email — click to copy</span><b>{e(D.CORREO)}</b></button>
     <dl class="ct-tabla">
-      <div><dt class="mono">Currículum</dt><dd><a href="cv.html">Ver en la web</a> · <a href="{e(D.CV_PDF)}" download>Descargar PDF ↓</a></dd></div>
+      <div><dt class="mono">Résumé</dt><dd><a href="cv.html">View online</a> · <a href="{e(D.CV_PDF)}" download>Download PDF ↓</a></dd></div>
       <div><dt class="mono">Instagram</dt><dd><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">{e(D.INSTAGRAM_T)} ↗</a></dd></div>
-      <div><dt class="mono">Base</dt><dd>{e(D.CIUDAD)}</dd></div>
-      <div><dt class="mono">Estado</dt><dd><span class="punto"></span> {e(D.DISPONIBLE)}</dd></div>
-      <div><dt class="mono">Servicios</dt><dd>{e(' · '.join(t for t, _ in D.SERVICIOS))}</dd></div>
+      <div><dt class="mono">Location</dt><dd>{e(D.CIUDAD)}</dd></div>
+      <div><dt class="mono">Status</dt><dd><span class="punto"></span> {e(D.DISPONIBLE)}</dd></div>
+      <div><dt class="mono">Services</dt><dd>{e(' · '.join(t for t, _ in D.SERVICIOS))}</dd></div>
     </dl>
   </section>
 </main>"""
-    return C.documento(f"Contacto · {D.NOMBRE}", "Escríbeme para tu próximo proyecto.", FUENTES, envoltura(cuerpo, "contacto.html", "05", "Contacto"), clase="pg-contacto")
+    return C.documento(f"Contact · {D.NOMBRE}", "Get in touch about a role or a project.", FUENTES, envoltura(cuerpo, "contact.html", "05", "Contact"), clase="pg-contacto")
 
 
 def cv():
     cuerpo = f"""<main>
-  <section class="pag-cab rj"><p class="mono">04 — Currículum</p><h1 data-lineas>Currículum</h1></section>
+  <section class="pag-cab rj"><p class="mono">04 — Résumé</p><h1 data-lineas>Résumé</h1></section>
   <section class="rj">{C.cv_secciones("mono cv-h")}</section>
 </main>"""
-    return C.documento(f"Currículum · {D.NOMBRE}", D.CV_RESUMEN, FUENTES, envoltura(cuerpo, "cv.html", "04", "Currículum"), clase="pg-cv")
+    return C.documento(f"Résumé · {D.NOMBRE}", D.CV_RESUMEN, FUENTES, envoltura(cuerpo, "cv.html", "04", "Résumé"), clase="pg-cv")
 
 
 def paginas():
-    out = {"index.html": inicio(), "trabajo.html": trabajo(), "sobre.html": sobre(), "cv.html": cv(), "contacto.html": contacto()}
+    out = {"index.html": inicio(), "work.html": trabajo(), "about.html": sobre(), "cv.html": cv(), "contact.html": contacto()}
     for p in D.PROYECTOS:
         out[p["slug"] + ".html"] = proyecto(p)
     return out

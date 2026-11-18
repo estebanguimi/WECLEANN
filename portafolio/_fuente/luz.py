@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Línea A · LUZ — la identidad nace de tu fotografía de conciertos.
+"""Línea A · SPOTLIGHT (LUZ) — la identidad nace de tu fotografía de conciertos.
 
 Negro de escenario, luz ámbar de tungsteno y un foco que el visitante mueve con el cursor.
 """
@@ -18,12 +18,12 @@ MONOGRAMA = """<svg class="mono-eg" viewBox="0 0 64 64" aria-hidden="true">
 
 
 def nav(activa=""):
-    items = [("index.html", "Inicio"), ("trabajo.html", "Trabajo"), ("sobre.html", "Sobre mí"), ("cv.html", "CV"), ("contacto.html", "Contacto")]
+    items = [("index.html", "Home"), ("work.html", "Work"), ("about.html", "About"), ("cv.html", "CV"), ("contact.html", "Contact")]
     links = "".join(
         f'<a href="{h}" class="nav-l{" es-activa" if h == activa else ""}" data-cursor="ir"><span>{t}</span></a>' for h, t in items)
     return f"""<header class="cab" data-cab>
-  <a href="index.html" class="cab-marca" aria-label="{e(D.NOMBRE)}, inicio">{MONOGRAMA}<span class="cab-nombre">Esteban <i>Guillen</i></span></a>
-  <nav class="cab-nav" aria-label="Principal">{links}</nav>
+  <a href="index.html" class="cab-marca" aria-label="{e(D.NOMBRE)}, home">{MONOGRAMA}<span class="cab-nombre">Esteban <i>Guillen</i></span></a>
+  <nav class="cab-nav" aria-label="Main">{links}</nav>
   <span class="cab-reloj mono" data-reloj>Miami —:—</span>
 </header>"""
 
@@ -31,13 +31,13 @@ def nav(activa=""):
 def pie():
     return f"""<footer class="pie" data-pie>
   <div class="pie-luz" aria-hidden="true"></div>
-  <p class="mono pie-eti">¿Tienes un show, una campaña o una marca?</p>
-  <a class="pie-grande" href="contacto.html" data-cursor="escribir"><span>Hablemos</span></a>
+  <p class="mono pie-eti">Hiring for a team, a campaign or a show?</p>
+  <a class="pie-grande" href="contact.html" data-cursor="escribir"><span>Let's talk</span></a>
   <div class="pie-fila">
-    <button type="button" class="pie-correo" data-copiar="{e(D.CORREO)}">{e(D.CORREO)} <span class="mono" data-copiado>Copiar</span></button>
-    <nav class="pie-redes" aria-label="Redes">
-      <a href="cv.html">Currículum</a>
-      <a href="{e(D.CV_PDF)}" download>CV en PDF</a>
+    <button type="button" class="pie-correo" data-copiar="{e(D.CORREO)}">{e(D.CORREO)} <span class="mono" data-copiado>Copy</span></button>
+    <nav class="pie-redes" aria-label="Links">
+      <a href="cv.html">Résumé</a>
+      <a href="{e(D.CV_PDF)}" download>CV (PDF)</a>
       <a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram</a>
     </nav>
   </div>
@@ -95,31 +95,31 @@ def inicio():
     cuerpo = f"""<main>
   <section class="hero" data-hero>
     <canvas class="hero-gl" data-foco data-src="{hero_img}" aria-hidden="true"></canvas>
-    <img class="hero-respaldo" src="{hero_img}" alt="Escenario de MercyMe con haces de luz, fotografía de {e(D.NOMBRE)}">
+    <img class="hero-respaldo" src="{hero_img}" alt="MercyMe on stage with beams of light, photographed by {e(D.NOMBRE)}">
     <div class="hero-sup">
-      <p class="mono">Diseño · Video · Fotografía en vivo</p>
-      <p class="mono hero-dato"><b>1,3M+</b> vistas en campañas</p>
+      <p class="mono">Design · Video · Live photography</p>
+      <p class="mono hero-dato"><b>1.3M+</b> campaign views</p>
     </div>
     <h1 class="hero-t" data-partir><span class="l1">Esteban</span><span class="l2"><i>Guillen</i></span></h1>
     <div class="hero-inf">
       <p class="hero-bio">{e(D.BIO)}</p>
-      <p class="mono hero-guia">Mueve el cursor: es la luz</p>
+      <p class="mono hero-guia">Move the cursor: it's the light</p>
     </div>
   </section>
 
   <section class="manifiesto envoltura">
-    <p class="mono eti">Manifiesto</p>
-    <p class="manif-t" data-iluminar>Trabajo donde las cosas pasan rápido. Una campaña que sale mañana, un concierto a oscuras, un partido que empieza a las tres, una marca que publica todos los días. Mi trabajo es estar listo y que la imagen lo cuente sin explicación.</p>
+    <p class="mono eti">Approach</p>
+    <p class="manif-t" data-iluminar>I work where things move fast. A campaign that goes out tomorrow, a concert in the dark, a match that kicks off at three, a brand that posts every day. My job is to be ready, and to make the image tell the story without explanation.</p>
   </section>
 
   <section class="envoltura bloque">
-    <div class="bloque-cab"><p class="mono eti">Setlist · Trabajo seleccionado</p><a class="enlace" href="trabajo.html" data-cursor="ir">Ver los 12 proyectos</a></div>
+    <div class="bloque-cab"><p class="mono eti">Setlist · Selected work</p><a class="enlace" href="work.html" data-cursor="ir">See all 12 projects</a></div>
     {setlist(sel)}
   </section>
 
   <section class="vivo" data-horizontal>
     <div class="vivo-pin">
-      <div class="vivo-cab envoltura"><p class="mono eti">Seis disciplinas</p><h2>Video, foto, deporte,<br><i>marca, web y gaming.</i></h2></div>
+      <div class="vivo-cab envoltura"><p class="mono eti">Six disciplines</p><h2>Video, photo, sports,<br><i>brand, web and gaming.</i></h2></div>
       <div class="vivo-pista" data-pista>{"".join(vivo)}</div>
       <div class="vivo-barra" aria-hidden="true"><span data-barra></span></div>
     </div>
@@ -127,33 +127,33 @@ def inicio():
 
   <section class="envoltura bloque">
     <div class="cifras">
-      <div class="cifra"><b data-contar="900">900</b><span>K+ vistas<br>Sam Gallucci & NH Senate</span></div>
-      <div class="cifra"><b data-contar="436">436</b><span>K+ vistas<br>Bobby Charles for Maine</span></div>
-      <div class="cifra"><b data-contar="60">60</b><span>fotografías<br>de conciertos</span></div>
-      <div class="cifra"><b data-contar="53">53</b><span>afiches<br>de fútbol</span></div>
+      <div class="cifra"><b data-contar="900">900</b><span>K+ views<br>Sam Gallucci & NH Senate</span></div>
+      <div class="cifra"><b data-contar="436">436</b><span>K+ views<br>Bobby Charles for Maine</span></div>
+      <div class="cifra"><b data-contar="60">60</b><span>concert<br>photographs</span></div>
+      <div class="cifra"><b data-contar="53">53</b><span>football<br>posters</span></div>
     </div>
   </section>
 
   <section class="envoltura bloque">
-    <div class="bloque-cab"><p class="mono eti">Video para campañas</p><p class="bloque-nota">Montaje, motion y versiones para redes.</p></div>
+    <div class="bloque-cab"><p class="mono eti">Campaign video</p><p class="bloque-nota">Editing, motion and social cut-downs.</p></div>
     <div class="videos">{"".join(videos)}</div>
   </section>
 
   <section class="envoltura bloque">
-    <div class="bloque-cab"><p class="mono eti">Recorrido · desde 2018</p><a class="enlace" href="cv.html" data-cursor="ir">Ver currículum completo</a></div>
+    <div class="bloque-cab"><p class="mono eti">Experience · since 2018</p><a class="enlace" href="cv.html" data-cursor="ir">View full résumé</a></div>
     {C.recorrido()}
   </section>
 
   <section class="envoltura bloque">
-    <div class="bloque-cab"><p class="mono eti">Qué hago</p></div>
+    <div class="bloque-cab"><p class="mono eti">What I do</p></div>
     <ul class="servicios">{servicios}</ul>
   </section>
 </main>"""
-    return C.documento(f"{D.NOMBRE} · Luz", D.BIO, FUENTES, envoltura(cuerpo, "index.html"), clase="pg-inicio")
+    return C.documento(f"{D.NOMBRE} · Spotlight", D.BIO, FUENTES, envoltura(cuerpo, "index.html"), clase="pg-inicio")
 
 
 def trabajo():
-    filtros = [("todo", "Todo", len(D.PROYECTOS))] + [
+    filtros = [("todo", "All", len(D.PROYECTOS))] + [
         (k, v, sum(1 for p in D.PROYECTOS if p["cat"] == k)) for k, v in D.CATEGORIAS.items()]
     botones = "".join(
         f'<button type="button" class="filtro{" activo" if k == "todo" else ""}" data-filtro="{k}" aria-pressed="{"true" if k == "todo" else "false"}">'
@@ -168,14 +168,14 @@ def trabajo():
             f'<span class="t-pie"><span class="mono">{i + 1:02d}</span><b>{e(p["corto"])}</b><span class="t-cat">{e(D.CATEGORIAS[p["cat"]])} · {e(p["ano"])}</span></span></a>')
     cuerpo = f"""<main class="envoltura">
   <section class="pag-cab">
-    <p class="mono eti">Setlist completo · {len(D.PROYECTOS)} proyectos</p>
-    <h1 data-partir>Todo lo que<br><i>pasó en escena.</i></h1>
+    <p class="mono eti">Full setlist · {len(D.PROYECTOS)} projects</p>
+    <h1 data-partir>Everything that<br><i>happened on stage.</i></h1>
   </section>
-  <div class="filtros" role="group" aria-label="Filtrar por disciplina">{botones}</div>
+  <div class="filtros" role="group" aria-label="Filter by discipline">{botones}</div>
   <div class="mosaico" data-mosaico>{"".join(tarjetas)}</div>
 </main>"""
-    return C.documento(f"Trabajo · {D.NOMBRE}", "Proyectos de video, fotografía en vivo y diseño.", FUENTES,
-                       envoltura(cuerpo, "trabajo.html"), clase="pg-trabajo")
+    return C.documento(f"Work · {D.NOMBRE}", "Video, live photography and design projects.", FUENTES,
+                       envoltura(cuerpo, "work.html"), clase="pg-trabajo")
 
 
 def proyecto(p):
@@ -187,17 +187,17 @@ def proyecto(p):
   <section class="p-hero" data-p-hero>
     <div class="p-hero-img"><img src="{C.img(p['slug'], p['portada'])}" alt="{e(p['titulo'])}"></div>
     <div class="p-hero-txt envoltura">
-      <p class="mono eti"><a href="trabajo.html">Setlist</a> / {e(D.CATEGORIAS[p['cat']])}</p>
+      <p class="mono eti"><a href="work.html">Setlist</a> / {e(D.CATEGORIAS[p['cat']])}</p>
       <h1 data-partir>{e(p['titulo'])}</h1>
     </div>
   </section>
   <section class="envoltura p-intro">
     <dl class="p-meta">
-      <div><dt class="mono">Cliente</dt><dd>{e(p['cliente'])}</dd></div>
-      <div><dt class="mono">Mi rol</dt><dd>{e(D.ROLES[p['cat']])}</dd></div>
-      <div><dt class="mono">Disciplina</dt><dd>{e(D.CATEGORIAS[p['cat']])}</dd></div>
-      <div><dt class="mono">Año</dt><dd>{e(p['ano'])}</dd></div>
-      <div><dt class="mono">Herramientas</dt><dd>{e(', '.join(p['herr']))}</dd></div>
+      <div><dt class="mono">Client</dt><dd>{e(p['cliente'])}</dd></div>
+      <div><dt class="mono">My role</dt><dd>{e(D.ROLES[p['cat']])}</dd></div>
+      <div><dt class="mono">Discipline</dt><dd>{e(D.CATEGORIAS[p['cat']])}</dd></div>
+      <div><dt class="mono">Year</dt><dd>{e(p['ano'])}</dd></div>
+      <div><dt class="mono">Tools</dt><dd>{e(', '.join(p['herr']))}</dd></div>
     </dl>
     <div class="p-texto">
       <p class="p-resumen" data-iluminar>{e(p['resumen'])}</p>
@@ -209,15 +209,15 @@ def proyecto(p):
   <section class="envoltura p-galeria">{C.galeria(p['slug'])}</section>
   <a class="siguiente" href="{sig['slug']}.html" data-cursor="siguiente">
     <span class="sig-img"><img src="{C.img(sig['slug'], sig['portada'])}" alt="" loading="lazy"></span>
-    <span class="mono">Siguiente en el setlist</span>
+    <span class="mono">Next on the setlist</span>
     <span class="sig-t">{e(sig['titulo'])}</span>
   </a>
 </main>
 <div class="visor" data-visor hidden>
-  <button type="button" class="visor-cerrar mono" data-visor-cerrar>Cerrar</button>
-  <button type="button" class="visor-ant" data-visor-ant aria-label="Anterior">←</button>
+  <button type="button" class="visor-cerrar mono" data-visor-cerrar>Close</button>
+  <button type="button" class="visor-ant" data-visor-ant aria-label="Previous">←</button>
   <img alt="" data-visor-img>
-  <button type="button" class="visor-sig" data-visor-sig aria-label="Siguiente">→</button>
+  <button type="button" class="visor-sig" data-visor-sig aria-label="Next">→</button>
   <span class="visor-n mono" data-visor-n></span>
 </div>"""
     return C.documento(f"{p['corto']} · {D.NOMBRE}", p["resumen"], FUENTES, envoltura(cuerpo), clase="pg-proyecto")
@@ -230,56 +230,56 @@ def sobre():
     cuerpo = f"""<main class="envoltura">
   <section class="sobre">
     <figure class="sobre-foto" data-foco-css>
-      <img src="{C.retrato()}" alt="Retrato de {e(D.NOMBRE)}">
-      <figcaption class="mono">{e(D.CIUDAD)} · Origen {e(D.ORIGEN)}</figcaption>
+      <img src="{C.retrato()}" alt="Portrait of {e(D.NOMBRE)}">
+      <figcaption class="mono">{e(D.CIUDAD)} · From {e(D.ORIGEN)}</figcaption>
     </figure>
     <div class="sobre-txt">
-      <p class="mono eti">Sobre mí</p>
-      <h1 data-partir>Diseño, cámara<br><i>y corte.</i></h1>
+      <p class="mono eti">About</p>
+      <h1 data-partir>Design, camera<br><i>and cut.</i></h1>
       {bio}
       <p class="mono disponible"><span class="punto" aria-hidden="true"></span>{e(D.DISPONIBLE)}</p>
-      <p class="sobre-acc"><a class="boton-luz" href="cv.html" data-cursor="ir">Ver currículum</a><a class="boton-luz fantasma" href="{e(D.CV_PDF)}" download>Descargar PDF</a></p>
+      <p class="sobre-acc"><a class="boton-luz" href="cv.html" data-cursor="ir">View résumé</a><a class="boton-luz fantasma" href="{e(D.CV_PDF)}" download>Download PDF</a></p>
     </div>
   </section>
   <section class="bloque sobre-dos">
-    <div><p class="mono eti">Recorrido</p><ul class="exp">{exp}</ul></div>
-    <div><p class="mono eti">Herramientas</p><ul class="herr">{herr}</ul></div>
+    <div><p class="mono eti">Experience</p><ul class="exp">{exp}</ul></div>
+    <div><p class="mono eti">Tools</p><ul class="herr">{herr}</ul></div>
   </section>
 </main>"""
-    return C.documento(f"Sobre mí · {D.NOMBRE}", D.BIO, FUENTES, envoltura(cuerpo, "sobre.html"), clase="pg-sobre")
+    return C.documento(f"About · {D.NOMBRE}", D.BIO, FUENTES, envoltura(cuerpo, "about.html"), clase="pg-sobre")
 
 
 def contacto():
     cuerpo = f"""<main class="envoltura">
   <section class="contacto">
-    <p class="mono eti">Contacto · {e(D.DISPONIBLE)}</p>
-    <h1 data-partir>Enciende<br><i>la próxima.</i></h1>
+    <p class="mono eti">Contact · {e(D.DISPONIBLE)}</p>
+    <h1 data-partir>Light up<br><i>the next one.</i></h1>
     <button type="button" class="correo-grande" data-copiar="{e(D.CORREO)}" data-cursor="copiar">{e(D.CORREO)}</button>
-    <p class="mono" data-copiado-g role="status">Haz clic para copiar el correo</p>
+    <p class="mono" data-copiado-g role="status">Click to copy the email</p>
     <div class="contacto-cols">
-      <div><p class="mono eti">Perfil</p><a href="cv.html">Currículum</a><a href="{e(D.CV_PDF)}" download>CV en PDF</a><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram · {e(D.INSTAGRAM_T)}</a></div>
-      <div><p class="mono eti">Base</p><p>{e(D.CIUDAD)}<br>Origen: {e(D.ORIGEN)}</p></div>
-      <div><p class="mono eti">Idiomas</p><p>{"<br>".join(e(a + " · " + b) for a, b in D.IDIOMAS)}</p></div>
+      <div><p class="mono eti">Profile</p><a href="cv.html">Résumé</a><a href="{e(D.CV_PDF)}" download>CV (PDF)</a><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram · {e(D.INSTAGRAM_T)}</a></div>
+      <div><p class="mono eti">Location</p><p>{e(D.CIUDAD)}<br>From: {e(D.ORIGEN)}</p></div>
+      <div><p class="mono eti">Languages</p><p>{"<br>".join(e(a + " · " + b) for a, b in D.IDIOMAS)}</p></div>
     </div>
   </section>
 </main>"""
-    return C.documento(f"Contacto · {D.NOMBRE}", "Escríbeme para tu próximo proyecto.", FUENTES,
-                       envoltura(cuerpo, "contacto.html"), clase="pg-contacto")
+    return C.documento(f"Contact · {D.NOMBRE}", "Get in touch about a role or a project.", FUENTES,
+                       envoltura(cuerpo, "contact.html"), clase="pg-contacto")
 
 
 def cv():
     cuerpo = f"""<main class="envoltura">
   <section class="pag-cab">
-    <p class="mono eti">Currículum · {e(D.NOMBRE)}</p>
-    <h1 data-partir>Ocho años<br><i>de oficio.</i></h1>
+    <p class="mono eti">Résumé · {e(D.NOMBRE)}</p>
+    <h1 data-partir>Eight years<br><i>of craft.</i></h1>
   </section>
   {C.cv_secciones("mono eti")}
 </main>"""
-    return C.documento(f"Currículum · {D.NOMBRE}", D.CV_RESUMEN, FUENTES, envoltura(cuerpo, "cv.html"), clase="pg-cv")
+    return C.documento(f"Résumé · {D.NOMBRE}", D.CV_RESUMEN, FUENTES, envoltura(cuerpo, "cv.html"), clase="pg-cv")
 
 
 def paginas():
-    out = {"index.html": inicio(), "trabajo.html": trabajo(), "sobre.html": sobre(), "cv.html": cv(), "contacto.html": contacto()}
+    out = {"index.html": inicio(), "work.html": trabajo(), "about.html": sobre(), "cv.html": cv(), "contact.html": contacto()}
     for p in D.PROYECTOS:
         out[p["slug"] + ".html"] = proyecto(p)
     return out

@@ -20,7 +20,7 @@
       ev.stopPropagation();
       var t = b.getAttribute("data-copiar"), av = b.querySelector("[data-copiado]");
       var ok = function () {
-        if (av) { var o = av.textContent; av.textContent = "Copiado"; setTimeout(function () { av.textContent = o; }, 1500); }
+        if (av) { var o = av.textContent; av.textContent = "Copied"; setTimeout(function () { av.textContent = o; }, 1500); }
         if (b.classList.contains("sw")) { b.classList.add("copiado"); setTimeout(function () { b.classList.remove("copiado"); }, 1500); }
       };
       if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, ok); else ok();
@@ -204,13 +204,13 @@
       var b = document.querySelector('.capas [data-ir="' + (slug || clave) + '"]'); if (b) b.classList.add("sel");
       var d = slug && datos[slug];
       if (d) {
-        inspSel.innerHTML = '<button type="button" class="insp-cerrar" aria-label="Cerrar">✕</button><p class="panel-t mono">Frame seleccionado</p><img class="insp-img" src="' + d.img + '" alt="">' +
+        inspSel.innerHTML = '<button type="button" class="insp-cerrar" aria-label="Close">✕</button><p class="panel-t mono">Selected frame</p><img class="insp-img" src="' + d.img + '" alt="">' +
           "<h2>" + esc(d.t) + '</h2><p class="res">' + esc(d.res) + '</p><dl class="insp-dl">' +
-          "<div><dt class='mono'>Cliente</dt><dd>" + esc(d.cli) + "</dd></div><div><dt class='mono'>Mi rol</dt><dd>" + esc(d.rol) + "</dd></div>" +
-          "<div><dt class='mono'>Año</dt><dd>" + esc(d.a) + "</dd></div><div><dt class='mono'>Herramientas</dt><dd>" + esc(d.herr) + "</dd></div></dl>" +
+          "<div><dt class='mono'>Client</dt><dd>" + esc(d.cli) + "</dd></div><div><dt class='mono'>My role</dt><dd>" + esc(d.rol) + "</dd></div>" +
+          "<div><dt class='mono'>Year</dt><dd>" + esc(d.a) + "</dd></div><div><dt class='mono'>Tools</dt><dd>" + esc(d.herr) + "</dd></div></dl>" +
           '<div class="insp-datos">' + d.d.map(function (x) { return "<div><b>" + esc(x[0]) + "</b><span>" + esc(x[1]) + "</span></div>"; }).join("") + "</div>" +
           '<div class="insp-pal">' + d.pal.map(function (c) { return '<span class="sw" style="--c:' + c + '"><i></i><span class="mono">' + c + "</span></span>"; }).join("") + "</div>" +
-          '<a class="btn" href="' + slug + '.html" data-abrir>Abrir proyecto →</a>';
+          '<a class="btn" href="' + slug + '.html" data-abrir>Open project →</a>';
         inspSel.hidden = false; inspDoc.hidden = true;
         inspSel.querySelector("[data-abrir]").addEventListener("click", function (ev) { ev.preventDefault(); abrir(el); });
         inspSel.querySelector(".insp-cerrar").addEventListener("click", function () { seleccionar(null); });
@@ -462,7 +462,7 @@
 
     /* copiar correo del currículum */
     document.querySelectorAll(".cv-correo").forEach(function (b) {
-      b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Correo copiado"; setTimeout(function () { b.textContent = t; }, 1600); });
+      b.addEventListener("click", function () { var t = b.textContent; b.textContent = "Email copied"; setTimeout(function () { b.textContent = t; }, 1600); });
     });
   }
 })();
