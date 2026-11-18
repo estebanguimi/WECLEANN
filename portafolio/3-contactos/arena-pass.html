@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arena Pass · Esteban Guillen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Un arena entero modelado en el navegador. Eliges sección, eliges asiento y ves la vista real desde ese asiento antes de pagar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=DM+Mono:wght@400;500&family=Reenie+Beanie&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body class="pg-proyecto">
+<header class="cab">
+  <a class="cab-nombre" href="index.html">Esteban Guillen</a>
+  <span class="cab-sobre mono">Laboratorio · Hoja de contactos 2026</span>
+  <nav aria-label="Principal"><a href="trabajo.html">Trabajo</a><a href="sobre.html">Sobre mí</a><a href="contacto.html">Contacto</a></nav>
+</header>
+<main>
+  <section class="proy-cab">
+    <p class="mono"><a href="trabajo.html">Hoja de contactos</a> / Rollo 02</p>
+    <h1>Arena Pass</h1>
+    <p class="proy-sub">Venta de entradas en 3D para el Amerant Bank Arena</p>
+  </section>
+  <section class="ampliacion">
+    <figure class="copia copia-grande">
+      <img src="assets/arena-aerea.jpg" alt="Vista aérea del arena con el panel de zonas y precios">
+      <figcaption class="mono">12 · Vista aérea del arena con el panel de zonas y precios</figcaption>
+    </figure>
+    <aside class="margen">
+      <p class="mano nota-margen">asientos instanciados</p>
+      <svg class="lapiz lapiz-flecha flecha-margen" viewBox="0 0 120 40" aria-hidden="true"><path d="M4 23 C 40 13, 80 31, 112 21"/><path d="M98 10 L113 21 L99 33"/></svg>
+      <dl class="ficha">
+        <div><dt>Rol</dt><dd>Concepto, modelado y desarrollo</dd></div>
+        <div><dt>Año</dt><dd>2026</dd></div>
+        <div><dt>Tipo</dt><dd>Web 3D</dd></div>
+        <div><dt>Herramientas</dt><dd>Three.js, JavaScript, HTML, CSS</dd></div>
+      </dl>
+      
+    </aside>
+  </section>
+  <section class="resumen-proy">
+    <p>Un arena entero modelado en el navegador. Eliges sección, eliges asiento y ves la vista real desde ese asiento antes de pagar.</p>
+    <ul class="cifras"><li><b>~18.000</b><span>asientos individuales</span></li><li><b>16</b><span>suites VIP</span></li><li><b>3</b><span>configuraciones</span></li></ul>
+  </section>
+  <section class="texto">
+    <div><h2>El encargo</h2><p>Comprar una entrada desde un plano plano es adivinar. La idea fue llevar al comprador al lugar: que vea el escenario desde su fila y compare precio contra vista.</p></div>
+    <div><h2>Lo que hice</h2><ul class="lista"><li>Vista aérea del arena con estacionamientos, palmeras, lago y autopista.</li><li>Unos 18.000 asientos individuales en los niveles 100 y 300, más 16 suites del nivel club.</li><li>Tres configuraciones según el evento: hockey, concierto con sillas en pista y baloncesto con courtside.</li><li>Clic en un asiento para ver la vista; Ver en 3D baja la cámara a la altura de los ojos.</li><li>Filtro de precio, carrito de hasta 8 asientos, impuesto de Florida (7 %) y entradas con QR.</li></ul></div>
+  </section>
+  <section class="decisiones-sec">
+    <h2>Decisiones</h2>
+    <div class="decisiones"><div class="decision"><span class="dec-n mano">1</span><h3>Asientos instanciados</h3><p>Miles de asientos dibujados como una sola malla para que vaya fluido en un portátil.</p></div><div class="decision"><span class="dec-n mano">2</span><h3>Secciones bloqueadas</h3><p>En conciertos se cierran las secciones detrás del escenario automáticamente.</p></div><div class="decision"><span class="dec-n mano">3</span><h3>Sin servidor</h3><p>Es un sitio estático; para venta real se conecta inventario y pasarela de pago.</p></div></div>
+  </section>
+  <section class="hoja hoja-proy" aria-label="Tira del rollo 2">
+    <div class="hoja-cab"><p class="mono">Rollo 02 completo</p><p class="mano hoja-instr">pasa la lupa</p></div>
+    <div class="tiras"><div class="tira" aria-label="Arena Pass: Venta de entradas en 3D para el Amerant Bank Arena"><span class="pelicula"><span class="borde-txt">EG 2026 · ROLLO 02 · WEB 3D</span><span class="cuadros"><span class="fot"><span class="borde-num">12 <i>▸12A</i></span><span class="cuadro" role="img" aria-label="Arena Pass, fotograma 12" data-lupa data-img="assets/arena-aerea.jpg" data-sz="1.0667" data-ar="1.6000" data-px="50" data-py="50" style="background-image:url(assets/arena-aerea.jpg);background-size:106.7% auto;background-position:50% 50%"><svg class="lapiz lapiz-circulo" viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true"><path d="M30.9 8.9 Q40.0 4.6 51.0 5.6 Q61.4 6.6 72.0 8.2 Q80.3 12.9 88.7 17.6 Q91.9 24.7 96.8 31.4 Q94.8 38.7 93.1 45.9 Q89.0 52.8 81.1 58.1 Q72.4 62.8 61.8 65.2 Q50.7 64.9 39.5 65.9 Q29.2 62.8 20.5 58.4 Q13.3 52.9 5.9 47.2 Q3.6 39.8 2.0 32.3 Q4.7 24.9 9.0 17.8 Q17.1 12.4 25.8 7.6 Q36.2 4.7 47.4 4.1" vector-effect="non-scaling-stroke"/></svg></span></span><span class="fot"><span class="borde-num">13 <i>▸13A</i></span><span class="cuadro" role="img" aria-label="Arena Pass, fotograma 13" data-lupa data-img="assets/arena-aerea.jpg" data-sz="2.1333" data-ar="1.6000" data-px="45" data-py="55" style="background-image:url(assets/arena-aerea.jpg);background-size:213.3% auto;background-position:45% 55%"></span></span><span class="fot"><span class="borde-num">14 <i>▸14A</i></span><span class="cuadro" role="img" aria-label="Arena Pass, fotograma 14" data-lupa data-img="assets/arena-concierto.jpg" data-sz="1.4933" data-ar="1.6000" data-px="30" data-py="60" style="background-image:url(assets/arena-concierto.jpg);background-size:149.3% auto;background-position:30% 60%"></span></span><span class="fot"><span class="borde-num">15 <i>▸15A</i></span><span class="cuadro" role="img" aria-label="Arena Pass, fotograma 15" data-lupa data-img="assets/arena-asientos.jpg" data-sz="1.0667" data-ar="1.6000" data-px="50" data-py="50" style="background-image:url(assets/arena-asientos.jpg);background-size:106.7% auto;background-position:50% 50%"></span></span><span class="fot"><span class="borde-num">16 <i>▸16A</i></span><span class="cuadro" role="img" aria-label="Arena Pass, fotograma 16" data-lupa data-img="assets/arena-asientos.jpg" data-sz="1.9200" data-ar="1.6000" data-px="40" data-py="80" style="background-image:url(assets/arena-asientos.jpg);background-size:192.0% auto;background-position:40% 80%"></span></span><span class="fot"><span class="borde-num">17 <i>▸17A</i></span><span class="cuadro" role="img" aria-label="Arena Pass, fotograma 17" data-lupa data-img="assets/arena-aerea.jpg" data-sz="2.7733" data-ar="1.6000" data-px="90" data-py="40" style="background-image:url(assets/arena-aerea.jpg);background-size:277.3% auto;background-position:90% 40%"><svg class="lapiz lapiz-x" viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true"><path d="M13 12 Q50 36 88 59" vector-effect="non-scaling-stroke"/><path d="M90 6 Q47 34 12 60" vector-effect="non-scaling-stroke"/></svg></span></span></span></span></div></div>
+  </section>
+  <section class="galeria"><figure class="copia copia-chica"><img src="assets/arena-concierto.jpg" alt="Configuración de concierto con escenario y pista" loading="lazy"><figcaption class="mono">Configuración de concierto con escenario y pista</figcaption></figure><figure class="copia copia-chica"><img src="assets/arena-asientos.jpg" alt="Selección de asientos en el piso frente al escenario" loading="lazy"><figcaption class="mono">Selección de asientos en el piso frente al escenario</figcaption></figure></section>
+  <p class="nota-pie mono">Demo: eventos, precios y disponibilidad son de ejemplo.</p>
+  <a class="siguiente" href="cleanspace.html"><span class="mono">Siguiente rollo · 03</span><span class="sig-t">CleanSpace</span><svg class="lapiz lapiz-flecha flecha-sig" viewBox="0 0 120 40" aria-hidden="true"><path d="M4 22 C 40 12, 80 30, 112 20"/><path d="M98 9 L113 20 L99 32"/></svg></a>
+</main>
+<div class="lupa" data-lupa-el aria-hidden="true" hidden></div>
+<footer class="pie">
+  <div class="pie-in">
+    <p class="pie-mano mano">¿Imprimimos algo juntos?</p>
+    <a class="pie-link" href="contacto.html">Pedir copias · Contacto</a>
+    <p class="pie-legal mono">© 2026 Esteban Guillen · Florida, EE. UU. · Revelado a mano en HTML y CSS</p>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
