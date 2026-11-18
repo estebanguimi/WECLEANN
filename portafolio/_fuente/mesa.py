@@ -232,7 +232,7 @@ def inicio():
   </aside>
 </main>
 <script type="application/json" id="datos-proyectos">{datos_js()}</script>"""
-    return C.documento(f"{D.NOMBRE} · Portafolio", D.BIO, FUENTES, cuerpo, clase="pg-inicio")
+    return C.documento(f"{D.NOMBRE} · Mesa", D.BIO, FUENTES, cuerpo, clase="pg-inicio")
 
 
 # ---------------------------------------------------------------------------------------------- trabajo

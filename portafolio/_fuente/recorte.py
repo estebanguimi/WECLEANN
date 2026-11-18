@@ -134,7 +134,7 @@ def inicio():
   <header class="sec-cab"><p class="maq k">Qué hago</p><h2>Cinco oficios, un mismo cuidado.</h2></header>
   <ul class="servicios">{serv}</ul>
 </section>"""
-    return pagina(cuerpo, "index.html", "pg-inicio", f"{D.NOMBRE} · Portafolio", D.BIO)
+    return pagina(cuerpo, "index.html", "pg-inicio", f"{D.NOMBRE} · Recorte", D.BIO)
 
 
 # ------------------------------------------------------------------------------------------------ archivo
