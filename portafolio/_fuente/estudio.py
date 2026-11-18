@@ -1,0 +1,246 @@
+# -*- coding: utf-8 -*-
+"""Línea C · ESTUDIO — la identidad nace de tus sistemas de marca (Qatar 2022, Physo, Zena).
+
+Papel blanco, tinta negra, un naranja señal; retícula suiza de 12 columnas visible, tipografía grotesca
+grande y un visor WebGL que pasa de un proyecto a otro con una disolución de ruido.
+"""
+import json
+
+import comun as C
+import datos as D
+from comun import e
+
+FUENTES = "family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500"
+
+LOGO = """<svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+<rect width="48" height="48" fill="currentColor"/>
+<text x="24" y="31.5" text-anchor="middle" font-family="Geist, Helvetica, Arial, sans-serif" font-weight="700" font-size="20" letter-spacing="-1" fill="var(--papel)">EG</text>
+<rect x="34" y="8" width="6" height="6" fill="var(--senal)"/>
+</svg>"""
+
+
+def nav(activa=""):
+    items = [("index.html", "Inicio", "01"), ("trabajo.html", "Índice", "02"), ("sobre.html", "Perfil", "03"), ("contacto.html", "Contacto", "04")]
+    links = "".join(
+        f'<a href="{h}"{" aria-current=\"page\"" if h == activa else ""} data-n="{n}"><sup>{n}</sup>{t}</a>' for h, t, n in items)
+    return f"""<header class="cab" data-cab>
+  <a href="index.html" class="cab-marca" aria-label="{e(D.NOMBRE)}, inicio">{LOGO}<span>Esteban Guillen<br><em>Diseño, video y foto</em></span></a>
+  <span class="cab-dato mono">{e(D.CIUDAD)}<br><span data-reloj>—</span></span>
+  <span class="cab-dato mono">Disponible<br>Autónomo · Tiempo completo</span>
+  <nav class="cab-nav" aria-label="Principal">{links}</nav>
+</header>"""
+
+
+def pie():
+    return f"""<footer class="pie">
+  <div class="pie-cab"><p class="mono">05 — Contacto</p><button type="button" class="mono reticula-btn" data-reticula>Mostrar retícula (G)</button></div>
+  <a class="pie-correo" href="contacto.html" data-roll><span>Escríbeme</span></a>
+  <div class="pie-cols">
+    <div><p class="mono">Correo</p><button type="button" class="copiar" data-copiar="{e(D.CORREO)}">{e(D.CORREO)}</button></div>
+    <div><p class="mono">Redes</p><a href="{e(D.BEHANCE)}" target="_blank" rel="noopener">Behance ↗</a><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">Instagram ↗</a></div>
+    <div><p class="mono">Base</p><p>{e(D.CIUDAD)}<br>Origen {e(D.ORIGEN)}</p></div>
+    <div><p class="mono">Estado</p><p><span class="punto"></span> {e(D.DISPONIBLE)}</p></div>
+  </div>
+  <div class="pie-legal mono"><span>© 2026 Esteban Guillen</span><span>Retícula de 12 columnas · Geist</span><span>Behance desde {D.DESDE}</span></div>
+</footer>"""
+
+
+def envoltura(cuerpo, activa="", numero="01", titulo="Inicio"):
+    cols = "".join("<i></i>" for _ in range(12))
+    return f"""<div class="reticula" data-reticula-el aria-hidden="true">{cols}</div>
+<div class="panel" data-panel aria-hidden="true"><span class="panel-n" data-panel-n>{numero}</span><span class="panel-t" data-panel-t>{e(titulo)}</span></div>
+{nav(activa)}
+{cuerpo}
+{pie()}"""
+
+
+def visor_datos():
+    return json.dumps([{"slug": p["slug"], "t": p["corto"], "c": D.CATEGORIAS[p["cat"]], "a": p["ano"],
+                        "src": C.img(p["slug"], p["portada"])} for p in D.PROYECTOS], ensure_ascii=False)
+
+
+def inicio():
+    lista = "".join(
+        f'<li><a href="{p["slug"]}.html" data-slide="{i}"><span class="mono">{i + 1:02d}</span><span>{e(p["corto"])}</span><span class="mono li-c">{e(D.CATEGORIAS[p["cat"]])}</span></a></li>'
+        for i, p in enumerate(D.PROYECTOS))
+    indice = []
+    for i, p in enumerate(D.PROYECTOS):
+        miniaturas = "".join(f'<img src="{C.img(p["slug"], n)}" alt="" loading="lazy">' for n, w, h in D.imagenes(p["slug"])[:5])
+        indice.append(f"""<div class="ix-fila" data-ix>
+  <a class="ix-cab" href="{p['slug']}.html">
+    <span class="mono">{i + 1:02d}</span><span class="ix-t">{e(p['titulo'])}</span><span class="ix-c">{e(D.CATEGORIAS[p['cat']])}</span>
+    <span class="ix-cifra">{e(p['cifra'])} <small>{e(p['cifra_t'])}</small></span><span class="mono">{e(p['ano'])}</span>
+  </a>
+  <div class="ix-tira" data-ix-tira><div class="ix-tira-in">{miniaturas}</div></div>
+</div>""")
+    paletas = []
+    for p in D.PROYECTOS[:8] + D.PROYECTOS[8:]:
+        sw = "".join(f'<button type="button" class="sw" style="--c:{c}" data-copiar="{c}" title="Copiar {c}"><span class="mono">{c}</span></button>' for c in C.paleta(p["slug"]))
+        paletas.append(f'<a class="pal-f" href="{p["slug"]}.html"><span class="pal-t">{e(p["corto"])}</span></a><div class="pal-sw">{sw}</div>')
+    servicios = "".join(f'<li><span class="mono">0{i + 1}</span><h3>{e(t)}</h3><p>{e(d)}</p></li>' for i, (t, d) in enumerate(D.SERVICIOS))
+    cuerpo = f"""<main>
+  <section class="hero rj">
+    <h1 class="hero-t" data-lineas><span>Esteban</span><span>Guillen<sup class="mono">(EG)</sup></span></h1>
+    <div class="hero-meta">
+      <p class="hero-bio">{e(D.BIO)}</p>
+      <dl class="hero-cifras">
+        <div><dt class="mono">Vistas en campañas</dt><dd>1,3M</dd></div>
+        <div><dt class="mono">Proyectos en Behance</dt><dd data-contar="12">12</dd></div>
+        <div><dt class="mono">Piezas publicadas</dt><dd data-contar="{sum(len(D.imagenes(p['slug'])) for p in D.PROYECTOS)}">{sum(len(D.imagenes(p['slug'])) for p in D.PROYECTOS)}</dd></div>
+      </dl>
+    </div>
+    <div class="visor-wrap">
+      <ol class="visor-lista" data-visor-lista>{lista}</ol>
+      <figure class="visor" data-visor>
+        <canvas data-gl aria-hidden="true"></canvas>
+        <img class="visor-respaldo" src="{C.img(D.PROYECTOS[0]['slug'], D.PROYECTOS[0]['portada'])}" alt="Portada de {e(D.PROYECTOS[0]['titulo'])}" data-respaldo>
+        <figcaption class="visor-pie"><span class="mono" data-v-n>01 / 12</span><span data-v-t>{e(D.PROYECTOS[0]['corto'])}</span><span class="mono" data-v-c>{e(D.CATEGORIAS[D.PROYECTOS[0]['cat']])}</span></figcaption>
+        <span class="visor-barra" aria-hidden="true"><i data-v-barra></i></span>
+      </figure>
+      <script type="application/json" data-visor-datos>{visor_datos()}</script>
+    </div>
+  </section>
+
+  <section class="sec rj" id="indice">
+    <header class="sec-cab"><p class="mono">02 — Índice</p><h2 data-lineas>Doce proyectos,<br>seis disciplinas.</h2></header>
+    <div class="ix">{"".join(indice)}</div>
+  </section>
+
+  <section class="sec rj sec-negra">
+    <header class="sec-cab"><p class="mono">03 — Color</p><h2 data-lineas>La paleta real<br>de cada proyecto.</h2><p class="sec-nota">Colores medidos en las piezas publicadas. Toca uno para copiar su código.</p></header>
+    <div class="paletas">{"".join(paletas)}</div>
+  </section>
+
+  <section class="sec rj">
+    <header class="sec-cab"><p class="mono">04 — Disciplinas</p><h2 data-lineas>Lo que hago.</h2></header>
+    <ol class="servicios">{servicios}</ol>
+  </section>
+</main>"""
+    return C.documento(f"{D.NOMBRE} · Estudio", D.BIO, FUENTES, envoltura(cuerpo, "index.html", "01", "Inicio"), clase="pg-inicio")
+
+
+def trabajo():
+    filtros = [("todo", "Todo", len(D.PROYECTOS))] + [(k, v, sum(1 for p in D.PROYECTOS if p["cat"] == k)) for k, v in D.CATEGORIAS.items()]
+    botones = "".join(f'<button type="button" data-filtro="{k}" class="{"activo" if k == "todo" else ""}" aria-pressed="{"true" if k == "todo" else "false"}">{e(t)} <sup>{n}</sup></button>' for k, t, n in filtros)
+    items = []
+    for i, p in enumerate(D.PROYECTOS):
+        items.append(f"""<a class="it" href="{p['slug']}.html" data-cat="{p['cat']}">
+  <span class="it-img"><img src="{C.img(p['slug'], p['portada'])}" alt="{e(p['titulo'])}" loading="lazy"></span>
+  <span class="it-n mono">{i + 1:02d}</span><span class="it-t">{e(p['titulo'])}</span><span class="it-c">{e(D.CATEGORIAS[p['cat']])}</span><span class="it-a mono">{e(p['ano'])}</span>
+</a>""")
+    cuerpo = f"""<main>
+  <section class="pag-cab rj">
+    <p class="mono">02 — Índice</p>
+    <h1 data-lineas>Índice</h1>
+    <p class="pag-intro">Doce proyectos publicados en Behance entre 2022 y 2026. Cambia entre lista y cuadrícula.</p>
+  </section>
+  <div class="herr-barra rj">
+    <div class="filtros" role="group" aria-label="Filtrar">{botones}</div>
+    <div class="vistas" role="group" aria-label="Vista"><button type="button" data-vista="lista" class="activo" aria-pressed="true">Lista</button><button type="button" data-vista="cuadricula" aria-pressed="false">Cuadrícula</button></div>
+  </div>
+  <section class="items rj vista-lista" data-items>{"".join(items)}</section>
+</main>"""
+    return C.documento(f"Índice · {D.NOMBRE}", "Índice de proyectos.", FUENTES, envoltura(cuerpo, "trabajo.html", "02", "Índice"), clase="pg-trabajo")
+
+
+def proyecto(p):
+    i = D.PROYECTOS.index(p)
+    sig = D.siguiente(p["slug"])
+    textos = "".join(f"<p>{e(t)}</p>" for t in p["texto"])
+    datos = "".join(f'<div><dd>{e(v)}</dd><dt class="mono">{e(t)}</dt></div>' for v, t in p["datos"])
+    sw = "".join(f'<button type="button" class="sw" style="--c:{c}" data-copiar="{c}" title="Copiar {c}"><span class="mono">{c}</span></button>' for c in C.paleta(p["slug"]))
+    # cuadrícula modular: cada imagen ocupa columnas según su proporción
+    modulos = []
+    for k, (n, w, h) in enumerate(D.imagenes(p["slug"])):
+        ar = w / h
+        if ar > 1.6:
+            span = 12
+        elif ar > 1.15:
+            span = 8 if k % 3 == 0 else 6
+        elif ar > 0.8:
+            span = 6 if k % 2 == 0 else 4
+        else:
+            span = 4 if ar > 0.45 else 4
+        largo = " largo" if ar < 0.45 else ""
+        modulos.append(f'<figure class="mod{largo}" style="--s:{span}" data-i="{k}"><img src="{C.img(p["slug"], n)}" alt="" loading="lazy" width="{w}" height="{h}"><figcaption class="mono">{k + 1:02d}</figcaption></figure>')
+    video = ""
+    if p.get("video"):
+        video = f'<a class="boton" href="{e(D.url_behance(p))}" target="_blank" rel="noopener" data-roll><span>Ver los videos en Behance ↗</span></a>'
+    cuerpo = f"""<main>
+  <section class="p-cab rj">
+    <p class="mono p-miga"><a href="trabajo.html">Índice</a> / {i + 1:02d} / {e(D.CATEGORIAS[p['cat']])}</p>
+    <h1 data-lineas>{e(p['titulo'])}</h1>
+  </section>
+  <figure class="p-portada rj" data-portada><span><img src="{C.img(p['slug'], p['portada'])}" alt="{e(p['titulo'])}"></span></figure>
+  <section class="p-cuerpo rj">
+    <aside class="p-meta">
+      <dl>
+        <div><dt class="mono">Número</dt><dd>{i + 1:02d} de {len(D.PROYECTOS)}</dd></div>
+        <div><dt class="mono">Disciplina</dt><dd>{e(D.CATEGORIAS[p['cat']])}</dd></div>
+        <div><dt class="mono">Año</dt><dd>{e(p['ano'])}</dd></div>
+        <div><dt class="mono">Herramientas</dt><dd>{e(', '.join(p['herr']))}</dd></div>
+        <div><dt class="mono">Original</dt><dd><a href="{e(D.url_behance(p))}" target="_blank" rel="noopener">Behance ↗</a></dd></div>
+      </dl>
+      <p class="mono p-pal-t">Paleta medida</p>
+      <div class="p-pal">{sw}</div>
+    </aside>
+    <div class="p-txt">
+      <p class="p-res" data-lineas>{e(p['resumen'])}</p>
+      {textos}
+      {video}
+      <dl class="p-datos">{datos}</dl>
+    </div>
+  </section>
+  <section class="mods rj" data-galeria>{"".join(modulos)}</section>
+  <a class="sig rj" href="{sig['slug']}.html" data-roll>
+    <span class="mono">Siguiente — {D.PROYECTOS.index(sig) + 1:02d}</span>
+    <span class="sig-t"><span>{e(sig['titulo'])}</span></span>
+    <span class="sig-img"><img src="{C.img(sig['slug'], sig['portada'])}" alt="" loading="lazy"></span>
+  </a>
+</main>
+<div class="lb" data-lb hidden><button type="button" class="mono lb-x" data-lb-x>Cerrar [Esc]</button><img alt="" data-lb-img><span class="mono lb-n" data-lb-n></span><button type="button" class="lb-a" data-lb-a aria-label="Anterior">←</button><button type="button" class="lb-s" data-lb-s aria-label="Siguiente">→</button></div>"""
+    return C.documento(f"{p['corto']} · {D.NOMBRE}", p["resumen"], FUENTES, envoltura(cuerpo, "", f"{i + 1:02d}", p["corto"]), clase="pg-proyecto")
+
+
+def sobre():
+    bio = "".join(f"<p>{e(x)}</p>" for x in D.BIO_LARGA)
+    cv = "".join(f'<tr><td>{e(a)}</td><td>{e(b)}</td><td class="mono">{e(c) or "—"}</td></tr>' for a, b, c in D.EXPERIENCIA)
+    herr = "".join(f"<li>{e(h)}</li>" for h in D.HERRAMIENTAS)
+    cuerpo = f"""<main>
+  <section class="pag-cab rj"><p class="mono">03 — Perfil</p><h1 data-lineas>Perfil</h1></section>
+  <section class="perfil rj">
+    <figure class="perfil-foto" data-portada><span><img src="{C.retrato()}" alt="Retrato de {e(D.NOMBRE)}"></span><figcaption class="mono">Esteban Guillen · {e(D.CIUDAD)}</figcaption></figure>
+    <div class="perfil-txt"><p class="p-res" data-lineas>{e(D.BIO)}</p><div class="perfil-cols">{bio}</div></div>
+  </section>
+  <section class="sec rj">
+    <header class="sec-cab"><p class="mono">Recorrido</p></header>
+    <div class="tabla-wrap"><table class="cv"><thead><tr><th class="mono">Rol</th><th class="mono">Dónde</th><th class="mono">Cuándo</th></tr></thead><tbody>{cv}</tbody></table></div>
+    <header class="sec-cab" style="margin-top:72px"><p class="mono">Herramientas</p></header>
+    <ul class="herrs">{herr}</ul>
+  </section>
+</main>"""
+    return C.documento(f"Perfil · {D.NOMBRE}", D.BIO, FUENTES, envoltura(cuerpo, "sobre.html", "03", "Perfil"), clase="pg-sobre")
+
+
+def contacto():
+    cuerpo = f"""<main>
+  <section class="pag-cab rj"><p class="mono">04 — Contacto</p><h1 data-lineas>Hablemos<br>de tu proyecto.</h1></section>
+  <section class="ct rj">
+    <button type="button" class="ct-correo" data-copiar="{e(D.CORREO)}"><span class="mono" data-copiado>Correo — clic para copiar</span><b>{e(D.CORREO)}</b></button>
+    <dl class="ct-tabla">
+      <div><dt class="mono">Behance</dt><dd><a href="{e(D.BEHANCE)}" target="_blank" rel="noopener">behance.net/estebanguimi ↗</a></dd></div>
+      <div><dt class="mono">Instagram</dt><dd><a href="{e(D.INSTAGRAM)}" target="_blank" rel="noopener">{e(D.INSTAGRAM_T)} ↗</a></dd></div>
+      <div><dt class="mono">Base</dt><dd>{e(D.CIUDAD)}</dd></div>
+      <div><dt class="mono">Estado</dt><dd><span class="punto"></span> {e(D.DISPONIBLE)}</dd></div>
+      <div><dt class="mono">Servicios</dt><dd>{e(' · '.join(t for t, _ in D.SERVICIOS))}</dd></div>
+    </dl>
+  </section>
+</main>"""
+    return C.documento(f"Contacto · {D.NOMBRE}", "Escríbeme para tu próximo proyecto.", FUENTES, envoltura(cuerpo, "contacto.html", "04", "Contacto"), clase="pg-contacto")
+
+
+def paginas():
+    out = {"index.html": inicio(), "trabajo.html": trabajo(), "sobre.html": sobre(), "contacto.html": contacto()}
+    for p in D.PROYECTOS:
+        out[p["slug"] + ".html"] = proyecto(p)
+    return out

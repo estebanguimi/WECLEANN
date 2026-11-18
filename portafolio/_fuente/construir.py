@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Construye las tres webs del portafolio.
-
-    python3 _fuente/construir.py
-
-Salida: 1-corte/, 2-seccion/, 3-contactos/ (cada una autónoma, lista para subir a cualquier hosting estático).
-"""
+"""Construye las tres webs:  python3 _fuente/construir.py [luz matchday estudio]"""
 import importlib
 import os
 import shutil
@@ -13,29 +8,25 @@ import sys
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(AQUI)
 sys.path.insert(0, AQUI)
+import comun  # noqa: E402
 
-SITIOS = [("corte", "1-corte"), ("seccion", "2-seccion"), ("contactos", "3-contactos")]
+SITIOS = ["luz", "matchday", "estudio"]
 
 
-def construir(modulo, carpeta):
-    try:
-        m = importlib.import_module(modulo)
-    except ModuleNotFoundError as err:
-        if err.name == modulo:
-            return False
-        raise
-    destino = os.path.join(RAIZ, carpeta)
+def construir(nombre, destino=None, prefijo="../img/"):
+    comun.IMG["p"] = prefijo
+    m = importlib.import_module(nombre)
+    destino = destino or os.path.join(RAIZ, nombre)
     os.makedirs(destino, exist_ok=True)
-    for nombre, html in m.paginas().items():
-        with open(os.path.join(destino, nombre), "w", encoding="utf-8") as f:
+    for archivo, html in m.paginas().items():
+        with open(os.path.join(destino, archivo), "w", encoding="utf-8") as f:
             f.write(html)
-    for nombre in ("estilo.css", "app.js"):
-        shutil.copyfile(os.path.join(AQUI, modulo, nombre), os.path.join(destino, nombre))
-    shutil.copytree(os.path.join(AQUI, "assets"), os.path.join(destino, "assets"), dirs_exist_ok=True)
-    print("ok", carpeta)
-    return True
+    for archivo in os.listdir(os.path.join(AQUI, nombre)):
+        shutil.copyfile(os.path.join(AQUI, nombre, archivo), os.path.join(destino, archivo))
+    shutil.copytree(os.path.join(AQUI, "vendor"), os.path.join(destino, "vendor"), dirs_exist_ok=True)
+    print("ok", nombre)
 
 
 if __name__ == "__main__":
-    for mod, carpeta in SITIOS:
-        construir(mod, carpeta)
+    for s in (sys.argv[1:] or SITIOS):
+        construir(s)
